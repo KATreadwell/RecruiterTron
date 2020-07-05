@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import indexRoutes from './routes/';
+import { Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import { configureStore } from "./redux/store";
+import { history } from './jwt/_helpers';
+import { PrivateRoute } from './routes/PrivateRoutes';
+import Blanklayout from './layouts/blanklayout';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentUser: null
+        };
+    }
+
+    render() {
+        return (
+            <Provider store={configureStore()}>
+                <Router basename="/" history={history}>
+                    <Switch>
+                        <Route path="/authentication/login" component={Blanklayout} />;
+                        {indexRoutes.map((prop, key) => {
+                            return <PrivateRoute path={prop.path} key={key} component={prop.component} />;
+                        })
+                        }
+                    </Switch>
+                </Router>
+            </Provider>
+        )
+    }
 }
 
 export default App;
