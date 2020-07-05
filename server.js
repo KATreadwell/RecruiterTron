@@ -39,23 +39,27 @@ const CandidateModel = require("./models/Candidate");
 //   app.use(express.static("client/build"));
 // }
 
-//router setup
-const router = express.Router();
 
-//middleware
-router.use((req, res, next) => {
-  console.log("Damn it!");
-  next();
-})
-
-router.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({message: "Time to recruit some folks!"})
 })
 
-//route to get candidates + CRUD  ***router.route
-router.get("/candidates", (req, res ) => {
- 
-  res.json({message: "Candidates"})
+//push test date to dB
+app.post("/api/candidate", (req, res) => {
+  const records = new CandidateModel(req.body);
+  records.save((err, doc)=>{
+        if(err)
+          res.send(err)
+        res.json({data: doc, message: "Testy test, new candidate worked!"})
+
+  })
+})
+
+//route to get candidates + CRUD  ***coworker says I should use router.route and re-write all of these app. to router.route
+app.get("/api/candidates", (req, res ) => {
+ CandidateModel.find({}, (err, doc)=>{
+    res.json({data: doc, message:"Fetched all candidates."})
+ } )
 })
 
 
@@ -64,9 +68,6 @@ router.get("/candidates", (req, res ) => {
 // app.get("*", function(req, res) {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
-
-//registering routes
-app.use("/api", router);
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port: http://localhost:${PORT}`);

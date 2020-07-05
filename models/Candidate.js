@@ -10,16 +10,17 @@ const CandidateSchema = new Schema({
     state: String,
     zip: {
         type: Number,
-         min:5,
-          max:5
+         min:5
     },
     experience: String,
     qualifications: [String],
     commute: Number,
     status: [String],
     salary: String
-})
+},
+{timestamps: true}
+)
 
 const Candidate = mongoose.model("Candidate", CandidateSchema);
 
-module.exports = {Candidate}
+module.exports = Candidate;
