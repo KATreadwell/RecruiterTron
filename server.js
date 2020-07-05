@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const bodyparser = require('body-parser');
+const bodyparser = require("body-parser");
 const app = express();
 
 const path = require("path");
@@ -22,12 +22,13 @@ mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
 //Handle db connection
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'))
+db.on("error", console.error.bind(console, "error"))
 
-db.once('open', function(){
-  console.log('DB onnection alive');
+db.once("connected", function(){
+  console.log("Connected");
 })
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
@@ -40,15 +41,23 @@ db.once('open', function(){
 const router = express.Router();
 
 //middleware
+router.use(function(req, res, next){
+  console.log("Damn it!");
+  next();
+})
 
+router.get("/", function(req, res){
+  res.json({message: "Time to recruit some folks!"})
+})
 
 
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", function(req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
+
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port: http://localhost:${PORT}`);
