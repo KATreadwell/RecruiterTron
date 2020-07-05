@@ -1,5 +1,5 @@
 import React from 'react';
-import * as data from './data-bootstrap-table';
+import * as data from './data-position-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 

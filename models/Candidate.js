@@ -15,7 +15,7 @@ const CandidateSchema = new Schema({
     },
     experience: String,
     qualifications: [String],
-    commute: String,
+    commute: Number,
     status: [String],
     salary: String
 })
