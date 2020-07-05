@@ -1,6 +1,9 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyparser = require('body-parser');
+const app = express();
+
 const path = require("path");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -8,7 +11,6 @@ const axios = require("axios");
 // const db = require("./models")
 
 const PORT = process.env.PORT || 3001;
-const app = express();
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -20,11 +22,27 @@ mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+//Handle db connection
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error'))
 
+db.once('open', function(){
+  console.log('DB onnection alive');
+})
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
+
+//
+
+//router setup
+const router = express.Router();
+
+//middleware
+
+
+
 
 // Send every request to the React app
 // Define any API routes before this runs
@@ -33,5 +51,5 @@ app.get("*", function(req, res) {
 });
 
 app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`🌎 ==> API server now on port: http://localhost:${PORT}`);
 });
