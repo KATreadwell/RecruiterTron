@@ -30,26 +30,33 @@ db.on("error", console.error.bind(console, "error"))
 db.once("connected", function(){
   console.log("Connected");
 })
+
+//import models
+const CandidateModel = require("./models/Candidate");
+
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
 // }
 
-//
-
 //router setup
 const router = express.Router();
 
 //middleware
-router.use(function(req, res, next){
+router.use((req, res, next) => {
   console.log("Damn it!");
   next();
 })
 
-router.get("/", function(req, res){
+router.get("/", (req, res) => {
   res.json({message: "Time to recruit some folks!"})
 })
 
+//route to get candidates + CRUD  ***router.route
+router.get("/candidates", (req, res ) => {
+ 
+  res.json({message: "Candidates"})
+})
 
 
 // Send every request to the React app

@@ -1,4 +1,4 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
 const { boolean } = require("joi");
 const Schema = mongoose.Schema;
 const CandidateSchema = new Schema({
