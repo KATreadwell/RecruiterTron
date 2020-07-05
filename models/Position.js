@@ -1,5 +1,6 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const PositionSchema = new Schema({
     title: { type: String, required: true},
     category: {type: String, required: true}, 
@@ -13,12 +14,11 @@ const PositionSchema = new Schema({
     zip: {
         type: Number,
          min:5,
-        max:5
     },
     location: String,
     client: String
 })
 
-const Position = mongoose.model("Candidate", PositionSchema);
+const Position = mongoose.model("Position", PositionSchema);
 
-module.exports = {Position}
+module.exports = Position;

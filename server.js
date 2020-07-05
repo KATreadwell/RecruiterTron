@@ -33,6 +33,7 @@ db.once("connected", function(){
 
 //import models
 const CandidateModel = require("./models/Candidate");
+const PositionModel = require("./models/Position");
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
@@ -44,14 +45,13 @@ app.get("/api", (req, res) => {
   res.json({message: "Time to recruit some folks!"})
 })
 
-//push test date to dB
+//push candidate test data to dB
 app.post("/api/candidate", (req, res) => {
   const records = new CandidateModel(req.body);
   records.save((err, doc)=>{
         if(err)
           res.send(err)
         res.json({data: doc, message: "Testy test, new candidate worked!"})
-
   })
 })
 
@@ -59,6 +59,23 @@ app.post("/api/candidate", (req, res) => {
 app.get("/api/candidates", (req, res ) => {
  CandidateModel.find({}, (err, doc)=>{
     res.json({data: doc, message:"Fetched all candidates."})
+ } )
+})
+
+//push position test data to dB
+app.post("/api/position", (req, res) => {
+  const records = new PositionModel(req.body);
+  records.save((err, doc)=>{
+        if(err)
+          res.send(err)
+        res.json({data: doc, message: "Testy test, new position worked!"})
+  })
+})
+
+//route to get position + CRUD  ***coworker says I should use router.route and re-write all of these app. to router.route
+app.get("/api/positions", (req, res ) => {
+ PositionModel.find({}, (err, doc)=>{
+    res.json({data: doc, message:"Fetched all positions."})
  } )
 })
 

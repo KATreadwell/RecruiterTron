@@ -1,5 +1,5 @@
 import React from 'react';
-import * as data from './data-position-table';
+import * as jsondataPosition from './data-position-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
@@ -48,7 +48,7 @@ const Datatables = () => {
                     <CardBody>
                         <BootstrapTable striped hover
                             condensed search={true}
-                            data={data.jsondata}
+                            data={jsondataPosition.jsondataPosition}
                             deleteRow={true}
                             selectRow={selectRowProp}
                             pagination
@@ -57,9 +57,15 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >
-                            <TableHeaderColumn width='100' dataField='name' isKey>Name</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='gender'>Gender</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='company'>Company</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='title' isKey>Title</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='category'>Category</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='experience'>Experience</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='salary'>Salary</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='location'>Location</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='zip'>Zip</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='client'>Client</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

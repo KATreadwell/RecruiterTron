@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { boolean } = require("joi");
 const Schema = mongoose.Schema;
+
 const CandidateSchema = new Schema({
     name: { type: String, required: true}, 
     phone: {type: Number, required: true},
@@ -16,7 +16,8 @@ const CandidateSchema = new Schema({
     qualifications: [String],
     commute: Number,
     status: [String],
-    salary: String
+    salary: String,
+    ranking: [String]
 },
 {timestamps: true}
 )

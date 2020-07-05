@@ -1,5 +1,3 @@
-import { getMaxListeners } from "process"
-
 const jsondataCandidate = [
     {
         "name": "Batman",
