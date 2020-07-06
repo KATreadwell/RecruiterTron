@@ -12,6 +12,9 @@ import logodarktext from '../../../assets/images/logo-text.png';
 import logolighttext from '../../../assets/images/logo-light-text.png';
 import profilephoto from '../../../assets/images/users/1.jpg';
 
+//my ICS-branded images
+import ICEmailLogo from '../../../assets/images/ICEmailLogo.png';
+
 export default () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -66,16 +69,12 @@ export default () => {
                     {/* Logos Or Icon will be goes here for Light Layout && Dark Layout                */}
                     {/*--------------------------------------------------------------------------------*/}
                     <NavbarBrand href="/">
-                        <b className="logo-icon">
+                        {/* <b className="logo-icon">
                             <img src={logodarkicon} alt="homepage" className="dark-logo" />
-                            <img
-                                src={logolighticon}
-                                alt="homepage"
-                                className="light-logo"
-                            />
-                        </b>
+                            <img src={logolighticon} alt="blueICSlogo" className="light-logo"/>
+                        </b> */}
                         <span className="logo-text">
-                            <img src={logodarktext} alt="homepage" className="dark-logo" />
+                            <img src={ICEmailLogo} alt="homepage" className="dark-logo" />
                             <img
                                 src={logolighttext}
                                 className="light-logo"
