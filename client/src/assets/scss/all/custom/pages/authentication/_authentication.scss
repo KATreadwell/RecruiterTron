@@ -1,6 +1,7 @@
 .auth-wrapper {
   min-height: 100vh;
   position: relative;
+  
   .auth-box {
     background: $white;
     padding: 20px;
@@ -30,10 +31,35 @@
     margin: 0px;
     top: 0px;
   }
+
+  .font-medium mb-3 {
+    padding: 10px;
+  }
+}
+
+.font-medium mb-3{
+  top: 10px;
 }
 
 .error {
   color: $danger;
+}
+
+.btn-primary{
+  background-color: #002A5C;
+  font-weight: bold;
+}
+
+.alert-success{
+  background-color: #30759E;
+  color: white;
+  font-weight: bold;
+}
+
+#signin{
+  padding: 20px;
+  color: #30759E;
+  font-weight: bold;
 }
 
 @include media-breakpoint-down(sm) {

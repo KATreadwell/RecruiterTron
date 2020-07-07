@@ -13,7 +13,7 @@ const PositionSchema = new Schema({
     state: String,
     zip: {
         type: Number,
-         min:5,
+         min: 5,
     },
     location: String,
     client: String
