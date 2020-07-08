@@ -54,16 +54,18 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >
-                            <TableHeaderColumn width='50' dataField='name' isKey>Name</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='phone'>Phone</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='email'>Email</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='street'>Address</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='city'>City</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='name' isKey>Name</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='phone'>Phone</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='email'>Email</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='street' dataField='city'>Address
+                            
+                            </TableHeaderColumn>
+                            {/* <TableHeaderColumn width='50' dataField='city'>City</TableHeaderColumn>
                             <TableHeaderColumn width='50' dataField='state'>State</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='zip'>Zip</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='experience'>Security Experience</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='commute'>Max Commute (mi)</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='zip'>Zip</TableHeaderColumn> */}
+                            <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
+                            <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='commute'>Max Commute (mi)</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

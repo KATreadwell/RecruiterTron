@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
             authentication: this.activeRoute("/authentication") !== "" ? true : false,
             uicomponents: this.activeRoute("/ui-components") !== "" ? true : false,
             samplepages: this.activeRoute("/sample-pages") !== "" ? true : false,
-            dashboardpages: this.activeRoute("/dahboards") !== "" ? true : false,
+            dashboardpages: this.activeRoute("/dashboards") !== "" ? true : false,
             iconsPages: this.activeRoute("/icons") !== "" ? true : false,
             formlayoutPages: this.activeRoute("/form-layouts") !== "" ? true : false,
             formpickerPages: this.activeRoute("/form-pickers") !== "" ? true : false,

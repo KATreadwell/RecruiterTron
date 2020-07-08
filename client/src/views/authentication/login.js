@@ -24,7 +24,7 @@ import { authenticationService } from '../../jwt/_services';
 const sidebarBackground = {
     backgroundImage: "url(" + DoS3 + ")",
     backgroundRepeat: "no-repeat",
-    // backgroundPosition: "bottom center"
+    backgroundSize: "85%"
 };
 
 const Login = (props) => {

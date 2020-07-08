@@ -96,7 +96,7 @@ $cyan: #4fc3f7 !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
-    'primary': #5e72e4,
+    'primary': #30759e,
     'secondary': $gray-600,
     'success': #2dce89,
     'info': #2962ff,
@@ -106,7 +106,7 @@ $theme-colors: map-merge(
     'dark': $gray-800,
     'cyan': #4fc3f7,
     'orange': #fb6340,
-    'purple': #5e72e4,
+    'purple': #30759e,
     'inverse': #32325d
   ),
   $theme-colors
@@ -137,7 +137,7 @@ $enable-gradients: false !default;
 // Body
 $main-body-bg: #fff !default;
 $body-bg: #eef5f9;
-$body-color: #3e5569 !default;
+$body-color: #002a5c !default;
 
 $box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075) !default;
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.08) !default;
