@@ -2,8 +2,6 @@ import React from 'react';
 import * as jsondataCandidate from './data-candidate-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-// import * as addressCandidate from './data-candidate-table';
-
 
 function onAfterDeleteRow(rowKeys) {
     alert('The rowkey you drop: ' + rowKeys);
@@ -48,7 +46,6 @@ const Datatables = () => {
                         <BootstrapTable striped hover
                             condensed search={true}
                             data={jsondataCandidate.jsondataCandidate}
-                            // data={Object.assign(jsondataCandidate.jsondataCandidate, addressCandidate.addressCandidate)}
                             deleteRow={true}
                             selectRow={selectRowProp}
                             pagination
@@ -60,14 +57,12 @@ const Datatables = () => {
                             <TableHeaderColumn width='100' dataField='name' isKey>Name</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='phone'>Phone</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='email'>Email</TableHeaderColumn>
-                            <TableHeaderColumn width='200' dataField='address'>Address</TableHeaderColumn>             
-                            
-                            {/* <TableHeaderColumn width='50' dataField='city'>City</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='state'>State</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='zip'>Zip</TableHeaderColumn> */}
+                            <TableHeaderColumn width='150' dataField='address'>Address</TableHeaderColumn>             
                             <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='commute'>Max Commute (mi)</TableHeaderColumn>
+                            <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='commute'>Max Commute(mi)</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='ranking'>Ranking</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

@@ -8,7 +8,6 @@ const path = require("path");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const axios = require("axios");
-// const db = require("./models")
 
 const PORT = process.env.PORT || 3001;
 
@@ -55,7 +54,7 @@ app.post("/api/candidate", (req, res) => {
   })
 })
 
-//route to get candidates + CRUD  ***coworker says I should use router.route and re-write all of these app. to router.route
+//route to get candidates + CRUD  
 app.get("/api/candidates", (req, res ) => {
  CandidateModel.find({}, (err, doc)=>{
     res.json({data: doc, message:"Fetched all candidates."})

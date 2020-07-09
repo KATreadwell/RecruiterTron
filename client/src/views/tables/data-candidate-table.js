@@ -9,7 +9,9 @@ let jsondataCandidate = [
         "zip": "90027",
         "experience": "5+ years",
         "qualifications": ["Firearms Permit", "Guard Card", "Prior Law Enforcement Experience", "Transportation", "Driver's License"],
-        "commute": "10"
+        "commute": "10",
+        "status": "interview",
+        "ranking": "5"
     }
 ]
 
@@ -17,11 +19,5 @@ jsondataCandidate[0].address = `${jsondataCandidate[0].street}, ${jsondataCandid
 
 console.log(jsondataCandidate);
 
-// const addressCandidate = [
-//     {
-//         "address": `${jsondataCandidate[0].street}, ${jsondataCandidate[0].city}, ${jsondataCandidate[0].state}, ${jsondataCandidate[0].zip}`
-//     }
-// ]
-
 export { jsondataCandidate };
-// export { addressCandidate };
+
