@@ -8,12 +8,12 @@ function onAfterDeleteRow(rowKeys) {
 }
 
 function onAfterInsertRow(row) {
-  let newRowStr = '';
+    let newRowStr = '';
 
-  for (const prop in row) {
-    newRowStr += prop + ': ' + row[prop] + ' \n';
-  }
-  alert('The new row is:\n ' + newRowStr);
+    for (const prop in row) {
+        newRowStr += prop + ': ' + row[prop] + ' \n';
+    }
+    alert('The new row is:\n ' + newRowStr);
 }
 
 function afterSearch(searchText, result) {
@@ -54,15 +54,21 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >
-                            <TableHeaderColumn width='100' dataField='name' isKey>Name</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='phone'>Phone</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='email'>Email</TableHeaderColumn>
-                            <TableHeaderColumn width='150' dataField='address'>Address</TableHeaderColumn>             
-                            <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
-                            <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='commute'>Max Commute(mi)</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
-                            <TableHeaderColumn width='50' dataField='ranking'>Ranking</TableHeaderColumn>
+                            //<colgroup>
+                        //         <col span="3" style="width:100px">
+                        //     <TableHeaderColumn dataField='name' isKey>Name</TableHeaderColumn>
+                        //     <TableHeaderColumn dataField='phone'>Phone</TableHeaderColumn>
+                        //     <TableHeaderColumn dataField='email'>Email</TableHeaderColumn>
+                        //     </col>
+                        //     </colgroup>
+                        <TableHeaderColumn width='150' dataField='address'>Address</TableHeaderColumn>
+                        <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
+                        <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                        <TableHeaderColumn width='50' dataField='commute'>Max Commute(mi)</TableHeaderColumn>
+                        <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
+                        <TableHeaderColumn width='50' dataField='ranking'>Ranking</TableHeaderColumn>
+                        
+                            
                         </BootstrapTable>
                     </CardBody>
                 </Card>
@@ -70,7 +76,7 @@ const Datatables = () => {
 
             </Col>
         </Row>
-    </div>
+    </div >
     );
 }
 export default Datatables;    
