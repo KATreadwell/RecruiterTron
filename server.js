@@ -66,7 +66,7 @@ mongoose.connect(mongoUrl, {
 });
 
 //Handle db connection
-const db = mongoose.connection;
+// const db = mongoose.connection;
 db.on("error", console.error.bind(console, "error"))
 
 db.once("connected", function () {
@@ -77,8 +77,6 @@ db.once("connected", function () {
 const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
 const UserModel = require("./models/User");
-const User = require("./models/User");
-
 
 
 // Serve up static assets (usually on heroku)
