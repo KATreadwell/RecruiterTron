@@ -53,22 +53,19 @@ const Datatables = () => {
                             options={options}
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
-                        >
-                            //<colgroup>
-                        //         <col span="3" style="width:100px">
-                        //     <TableHeaderColumn dataField='name' isKey>Name</TableHeaderColumn>
-                        //     <TableHeaderColumn dataField='phone'>Phone</TableHeaderColumn>
-                        //     <TableHeaderColumn dataField='email'>Email</TableHeaderColumn>
-                        //     </col>
-                        //     </colgroup>
-                        <TableHeaderColumn width='150' dataField='address'>Address</TableHeaderColumn>
-                        <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
-                        <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                        <TableHeaderColumn width='50' dataField='commute'>Max Commute(mi)</TableHeaderColumn>
-                        <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
-                        <TableHeaderColumn width='50' dataField='ranking'>Ranking</TableHeaderColumn>
-                        
                             
+                        >
+                            <TableHeaderColumn width='100'dataField='name' isKey>Name</TableHeaderColumn>
+                            <TableHeaderColumn width='100'dataField='phone'>Phone</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='email'>Email</TableHeaderColumn>
+                            <TableHeaderColumn width='150' dataField='address'>Address</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='experience'>Security Experience</TableHeaderColumn>
+                            <TableHeaderColumn width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='commute'>Max Commute(mi)</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='status'>Status</TableHeaderColumn>
+                            <TableHeaderColumn width='50' dataField='ranking'>Ranking</TableHeaderColumn>
+
+
                         </BootstrapTable>
                     </CardBody>
                 </Card>
