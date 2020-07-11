@@ -100,14 +100,14 @@ export default () => {
                         {/* Start Mega Menu Dropdown                                                       */}
                         {/*--------------------------------------------------------------------------------*/}
                         <UncontrolledDropdown nav inNavbar className="mega-dropdown">
-                            <DropdownToggle nav> Mega <i className="fa fa-angle-down" /></DropdownToggle>
+                            <DropdownToggle nav> Hot Positions <i className="fa fa-angle-down" /></DropdownToggle>
                             <DropdownMenu>
                                 <Row>
                                     {/*--------------------------------------------------------------------------------*/}
                                     {/* Carousel [Item-1]                                                              */}
                                     {/*--------------------------------------------------------------------------------*/}
                                     <Col xs="12" sm="12" md="12" lg="3">
-                                        <h5 className="mb-3 text-uppercase">Carousel</h5>
+                                        <h5 className="mb-3 text-uppercase">Top Clients</h5>
                                         <UncontrolledCarousel items={data.items} />
                                     </Col>
                                     {/*--------------------------------------------------------------------------------*/}
@@ -116,14 +116,14 @@ export default () => {
                                     <Col xs="12" sm="12" md="12" lg="3">
                                         <h5 className="mb-3 text-uppercase">Progress</h5>
                                         <div className="d-flex no-block align-items-center mb-2">
-                                            <span>Sales</span>
+                                            <span>Positions Filled to Open</span>
                                             <div className="ml-auto">
                                                 <span className="text-primary">
                                                     <i className="mdi mdi-chart-areaspline" />
                                                 </span>
                                             </div>
                                         </div>
-                                        <Progress className="mb-3" animated value={2 * 5} />
+                                        {/* <Progress className="mb-3" animated value={2 * 5} />
                                         <div className="d-flex no-block align-items-center mb-2">
                                             <span>Marketing</span>
                                             <div className="ml-auto">
@@ -150,12 +150,12 @@ export default () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <Progress className="mb-3" animated color="warning" value={70} />
+                                        <Progress className="mb-3" animated color="warning" value={70} /> */}
                                     </Col>
                                     {/*--------------------------------------------------------------------------------*/}
                                     {/* Contact Us [Item-3]                                                            */}
                                     {/*--------------------------------------------------------------------------------*/}
-                                    <Col xs="12" sm="12" md="12" lg="3">
+                                    {/* <Col xs="12" sm="12" md="12" lg="3">
                                         <h5 className="mb-3 text-uppercase">Contact Us</h5>
                                         <Form>
                                             <FormGroup>
@@ -184,7 +184,7 @@ export default () => {
                                             </FormGroup>
                                             <Button color="primary">Submit</Button>
                                         </Form>
-                                    </Col>
+                                    </Col> */}
                                     {/*--------------------------------------------------------------------------------*/}
                                     {/* List Style [Item-4]                                                            */}
                                     {/*--------------------------------------------------------------------------------*/}
@@ -242,7 +242,7 @@ export default () => {
                         {/*--------------------------------------------------------------------------------*/}
                         {/* Start Create New Dropdown                                                      */}
                         {/*--------------------------------------------------------------------------------*/}
-                        <UncontrolledDropdown nav inNavbar>
+                        {/* <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav>
                                 Create New <i className="fa fa-angle-down" />
                             </DropdownToggle>
@@ -252,7 +252,7 @@ export default () => {
                                 <DropdownItem divider />
                                 <DropdownItem>Reset</DropdownItem>
                             </DropdownMenu>
-                        </UncontrolledDropdown>
+                        </UncontrolledDropdown> */}
                         {/*--------------------------------------------------------------------------------*/}
                         {/* End Create New Dropdown                                                        */}
                         {/*--------------------------------------------------------------------------------*/}
@@ -261,23 +261,23 @@ export default () => {
                         {/*--------------------------------------------------------------------------------*/}
                         {/* Start Notifications Dropdown                                                   */}
                         {/*--------------------------------------------------------------------------------*/}
-                        <UncontrolledDropdown nav inNavbar>
+                        {/* <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 <i className="mdi mdi-bell font-24" />
                             </DropdownToggle>
                             <DropdownMenu right className="mailbox">
                                 <span className="with-arrow">
                                     <span className="bg-primary" />
-                                </span>
-                                <div className="d-flex drop-title no-block align-items-center p-3 bg-primary text-white mb-2">
+                                </span> */}
+                                {/* <div className="d-flex drop-title no-block align-items-center p-3 bg-primary text-white mb-2">
                                     <div className="">
                                         <h4 className="mb-0">4 New</h4>
                                         <p className="mb-0">Notifications</p>
                                     </div>
-                                </div>
-                                <div className="message-center notifications">
+                                </div> */}
+                                {/* <div className="message-center notifications"> */}
                                     {/*<!-- Message -->*/}
-                                    {data.notifications.map((notification, index) => {
+                                    {/* {data.notifications.map((notification, index) => {
                                         return (
                                             <span href="" className="message-item" key={index}>
                                                 <span className={"btn btn-circle btn-" + notification.iconbg}>
@@ -293,24 +293,24 @@ export default () => {
                                             </span>
                                         );
                                     })}
-                                </div>
-                                <a className="nav-link text-center mb-1 text-dark" href=";">
+                                </div> */}
+                                {/* <a className="nav-link text-center mb-1 text-dark" href=";">
                                     <strong>Check all notifications</strong>{' '}
                                     <i className="fa fa-angle-right" />
-                                </a>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                                </a> */}
+                            {/* </DropdownMenu>
+                        </UncontrolledDropdown> */}
                         {/*--------------------------------------------------------------------------------*/}
                         {/* End Notifications Dropdown                                                     */}
                         {/*--------------------------------------------------------------------------------*/}
                         {/*--------------------------------------------------------------------------------*/}
                         {/* Start Messages Dropdown                                                        */}
                         {/*--------------------------------------------------------------------------------*/}
-                        <UncontrolledDropdown nav inNavbar>
+                        {/* <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 <i className="font-24 mdi mdi-comment-processing" />
-                            </DropdownToggle>
-                            <DropdownMenu right className="mailbox">
+                            </DropdownToggle> */}
+                            {/* <DropdownMenu right className="mailbox">
                                 <span className="with-arrow">
                                     <span className="bg-danger" />
                                 </span>
@@ -320,9 +320,9 @@ export default () => {
                                         <p className="mb-0">Messages</p>
                                     </div>
                                 </div>
-                                <div className="message-center message-body">
+                                <div className="message-center message-body"> */}
                                     {/*<!-- Message -->*/}
-                                    {data.messages.map((message, index) => {
+                                    {/* {data.messages.map((message, index) => {
                                         return (
                                             <span href="" className="message-item" key={index}>
                                                 <span className="user-img">
@@ -342,12 +342,12 @@ export default () => {
                                             </span>
                                         );
                                     })}
-                                </div>
-                                <span className="nav-link text-center link text-dark" href="">
+                                </div> */}
+                                {/* <span className="nav-link text-center link text-dark" href="">
                                     <b>See all e-Mails</b> <i className="fa fa-angle-right" />
                                 </span>
                             </DropdownMenu>
-                        </UncontrolledDropdown>
+                        </UncontrolledDropdown> */}
                         {/*--------------------------------------------------------------------------------*/}
                         {/* End Messages Dropdown                                                          */}
                         {/*--------------------------------------------------------------------------------*/}
@@ -378,10 +378,10 @@ export default () => {
                                     </div>
                                     <div className="ml-2">
                                         <h4 className="mb-0">Steave Jobs</h4>
-                                        <p className=" mb-0">varun@gmail.com</p>
+                                        {/* <p className=" mb-0">varun@gmail.com</p> */}
                                     </div>
                                 </div>
-                                <DropdownItem>
+                                {/* <DropdownItem>
                                     <i className="ti-user mr-1 ml-1" /> My Account
                                 </DropdownItem>
                                 <DropdownItem>
@@ -394,14 +394,14 @@ export default () => {
                                 <DropdownItem>
                                     <i className="ti-settings mr-1 ml-1" /> Account Settings
                                 </DropdownItem>
-                                <DropdownItem divider />
+                                <DropdownItem divider /> */}
                                 <DropdownItem href="/pages/login">
                                     <i className="fa fa-power-off mr-1 ml-1" /> Logout
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <Button color="success" className="btn-rounded ml-3 mb-2 mt-2"       >
+                                {/* <Button color="success" className="btn-rounded ml-3 mb-2 mt-2"       >
                                     View Profile
-                                </Button>
+                                </Button> */}
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         {/*--------------------------------------------------------------------------------*/}

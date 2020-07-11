@@ -52,8 +52,7 @@ const Datatables = () => {
                             insertRow={true}
                             options={options}
                             cellEdit={cellEditProp}
-                            tableHeaderClass='mb-0'
-                            
+                            tableHeaderClass='mb-0'   
                         >
                             <TableHeaderColumn width='100'dataField='name' isKey>Name</TableHeaderColumn>
                             <TableHeaderColumn width='100'dataField='phone'>Phone</TableHeaderColumn>

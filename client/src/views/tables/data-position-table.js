@@ -11,7 +11,8 @@ const jsondataPosition = [
         "state": "CA",
         "zip": "90401",
         "location": "Santa Monica",
-        "client": "DMV"
+        "client": "DMV",
+        "priority": "High"
     }   
 ]
 

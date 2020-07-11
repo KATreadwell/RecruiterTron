@@ -16,7 +16,9 @@ const PositionSchema = new Schema({
          min: 5,
     },
     location: String,
-    client: String
+    client: String,
+    priority: [String],
+    // logo: ?
 })
 
 const Position = mongoose.model("Position", PositionSchema);

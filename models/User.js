@@ -20,10 +20,14 @@ const UserSchema.pre("save", function (next) {
     return next();
 });
 
-// }) = new Schema({
+//  }) 
+//  = new Schema({
 //     username: String,
-//     admin: boolean
-// })
+//     admin: boolean,
+//     firstName: String,
+//     lastName: String,
+//     userPhoto: ?
+//  })
 
 const User = mongoose.model("User", UserSchema);
 
