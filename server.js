@@ -1,63 +1,65 @@
 require("dotenv").config();
 
 const express = require("express");
-const bodyparser = require("body-parser");
+const bodyParser = require("body-parser");
+const cors = require('cors')
+
 const app = express();
-const path = require("path");
+//const path = require("path");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const axios = require("axios");
-const db = require("./models");
-const passport = require("passport");
-const session = require("express-session");
-const bodyParser = require("body-parser");
-const methodOverride = require("method-override");
+//const axios = require("axios");
+// const db = require("./models");
+// const passport = require("passport");
+// const session = require("express-session");
+// const methodOverride = require("method-override");
+app.use(cors())
 
 //config for JwtStrategy which reads the JWT from the http Auth header with scheme 'bearer'
-const JwtStrategy = require("passport-jwt").Strategy,
-  ExtractJwt = require("passport-jwt").ExtractJwt;
-let opts = {}
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = "secret";
-opts.issuer = "accounts.examplesoft.com";
-opts.audience = "mywebsite.com"
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
+// const JwtStrategy = require("passport-jwt").Strategy,
+//   ExtractJwt = require("passport-jwt").ExtractJwt;
+// let opts = {}
+// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+// opts.secretOrKey = "secret";
+// opts.issuer = "accounts.examplesoft.com";
+// opts.audience = "mywebsite.com"
 
 //setup Passport
-passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-  User.findOne({ id: jwt_payload.sub }, function (err, user) {
-    if (err) {
-      return done(err, false);
-    }
-    if (user) {
-      return done(null, user);
-    } else {
-      return done(null, false);
-    }
-  });
-}));
+// passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
+//   User.findOne({ id: jwt_payload.sub }, function (err, user) {
+//     if (err) {
+//       return done(err, false);
+//     }
+//     if (user) {
+//       return done(null, user);
+//     } else {
+//       return done(null, false);
+//     }
+//   });
+// }));
 
 //jwt callback
-let cookieExtractor = function (req) {
-  let token = null;
-  if (req && req.cookies) {
-    token = req.cookies["jwt"];
-  }
-  return token;
-}
+// let cookieExtractor = function (req) {
+//   let token = null;
+//   if (req && req.cookies) {
+//     token = req.cookies["jwt"];
+//   }
+//   return token;
+// }
 
-app.post("/profile", passport.authenticate("jwt", { session: false }),
-  function (req, res) {
-    res.send(req.user.profile);
-  }
-);
+// app.post("/profile", passport.authenticate("jwt", { session: false }),
+//   function (req, res) {
+//     res.send(req.user.profile);
+//   }
+// );
 
 
 const PORT = process.env.PORT || 3001;
 
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
 const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost/recruiter-tron";
 
 mongoose.connect(mongoUrl, {
@@ -66,7 +68,7 @@ mongoose.connect(mongoUrl, {
 });
 
 //Handle db connection
-// const db = mongoose.connection;
+const db = mongoose.connection;
 db.on("error", console.error.bind(console, "error"))
 
 db.once("connected", function () {
@@ -76,8 +78,7 @@ db.once("connected", function () {
 //import models
 const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
-const UserModel = require("./models/User");
-
+// const UserModel = require("./models/User");
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
@@ -91,6 +92,7 @@ app.get("/api", (req, res) => {
 
 //push candidate test data to dB
 app.post("/api/candidate", (req, res) => {
+  console.log('request object', req.body )
   const records = new CandidateModel(req.body);
   records.save((err, doc) => {
     if (err)
@@ -103,6 +105,20 @@ app.post("/api/candidate", (req, res) => {
 app.get("/api/candidates", (req, res) => {
   CandidateModel.find({}, (err, doc) => {
     res.json({ data: doc, message: "Fetched all candidates." })
+  })
+})
+
+//Update
+app.put("/api/candidate", (req, res) => {
+  CandidateModel.findOneAndUpdate({
+    _id: req.body._id
+  }, req.body, {new:true}, function(err, candidate){
+    if(err)
+      res.send(err)
+    candidate.save(function(){
+      if(!err)
+        res.json({data: candidate, message: 'Candidate updated successfully.'})
+    })
   })
 })
 

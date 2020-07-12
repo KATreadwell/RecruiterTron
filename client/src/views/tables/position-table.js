@@ -57,6 +57,7 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >
+                            <TableHeaderColumn width='100' dataField='status'>Status</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='priority'>Priority</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='client'>Client</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='location'>Location</TableHeaderColumn>
@@ -64,9 +65,8 @@ const Datatables = () => {
                             <TableHeaderColumn width='100' dataField='title' isKey>Title</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='category'>Category</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='experience'>Experience</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='status'>Status</TableHeaderColumn>
                             <TableHeaderColumn width='100' dataField='salary'>Salary</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='qualifications'>Qualifications</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

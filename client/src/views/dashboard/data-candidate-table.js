@@ -15,7 +15,7 @@ let jsondataCandidate = [
     }
 ]
 
-jsondataCandidate[0].address = `${jsondataCandidate[0].street}, ${jsondataCandidate[0].city}, ${jsondataCandidate[0].state}, ${jsondataCandidate[0].zip}`;
+jsondataCandidate[0].address = `${jsondataCandidate[0].street}\n,  ${jsondataCandidate[0].city}, ${jsondataCandidate[0].state}, ${jsondataCandidate[0].zip}`;
 
 console.log(jsondataCandidate);
 
