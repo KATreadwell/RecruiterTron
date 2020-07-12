@@ -96,7 +96,7 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >   
-                            <TableHeaderColumn width='100' dataField='title' isKey>Title</TableHeaderColumn>
+                            <TableHeaderColumn width='150' dataField='title' isKey>Title</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='status'>Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='priority'>Priority</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='client'>Client</TableHeaderColumn>
@@ -105,8 +105,8 @@ const Datatables = () => {
                             {/* <TableHeaderColumn width='100' dataField='category'>Category</TableHeaderColumn> */}
                             <TableHeaderColumn width='100' dataField='experience'>Experience (yrs)</TableHeaderColumn>
                             {/* <TableHeaderColumn width='100' dataField='salary'>Salary</TableHeaderColumn> */}
-                            <TableHeaderColumn width='100' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='candidates'>Candidates</TableHeaderColumn>
+                            <TableHeaderColumn width='300' dataField='qualifications'>Qualifications</TableHeaderColumn>
+                            {/* <TableHeaderColumn width='100' dataField='candidates'>Candidates</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>

@@ -100,7 +100,7 @@ const Datatables = () => {
                             {/* <TableHeaderColumn dataSort={true} dataField='ranking' width="100">Ranking</TableHeaderColumn> */}
                             {/* <TableHeaderColumn dataField='salary' width="100">Salary</TableHeaderColumn> */}
                             <TableHeaderColumn dataField='qualifications' width="300">Qualifications</TableHeaderColumn>
-                            <TableHeaderColumn dataField='positions' width="300">Positions</TableHeaderColumn>
+                            {/* <TableHeaderColumn dataField='positions' width="300">Positions</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>
