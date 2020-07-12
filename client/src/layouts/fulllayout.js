@@ -51,6 +51,8 @@ export default (props) => {
         };
     }, [settings.activeSidebarType, width]);
 
+    let sidebarRoutes = ThemeRoutes.Admin
+    // let sidebarRoutes = user.isAdmin ? ThemeRoutes.Admin : ThemeRoutes.nonAdmin; 
     return (
         <div
             id="main-wrapper"
@@ -69,7 +71,7 @@ export default (props) => {
             {/*--------------------------------------------------------------------------------*/}
             {/* Sidebar                                                                        */}
             {/*--------------------------------------------------------------------------------*/}
-            <Sidebar {...props} routes={ThemeRoutes} />
+            <Sidebar {...props} routes={sidebarRoutes} />
             {/*--------------------------------------------------------------------------------*/}
             {/* Page Main-Content                                                              */}
             {/*--------------------------------------------------------------------------------*/}

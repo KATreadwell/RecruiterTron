@@ -15,10 +15,10 @@ function onAfterInsertRow(row) {
     let newRowStr = {}; let testArray = []
     for (const prop in row) {
         //newRowStr += prop + ': ' + row[prop] + ',';
-        newRowStr[prop]= row[prop]
+        newRowStr[prop]=row[prop]
     }
-    console.log( newRowStr);
-    const candidateData =JSON.stringify(newRowStr)
+    console.log(newRowStr);
+    const candidateData=JSON.stringify(newRowStr)
 
     axios({
         method: 'post',
@@ -48,6 +48,7 @@ const options = {
 const selectRowProp = {
     mode: 'checkbox'
 };
+
 const cellEditProp = {
     mode: 'click',
     blurToSave: true
@@ -89,16 +90,17 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
                         >
+                            <TableHeaderColumn dataField='name' width="150" isKey>Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
-                            <TableHeaderColumn dataField='name' width="100" isKey>Name</TableHeaderColumn>
                             <TableHeaderColumn dataField='phone' width="150">Phone</TableHeaderColumn>
                             <TableHeaderColumn dataField='email' width="150">Email</TableHeaderColumn>
-                            <TableHeaderColumn dataField='address' width="150">Address</TableHeaderColumn>
+                            <TableHeaderColumn dataField='address' width="200">Address</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='experience' width="100">Security Exp (yrs)</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} dataField='commute' width="100">Max Commute(mi)</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='commute' width="100">Max Commute (mi)</TableHeaderColumn>
                             {/* <TableHeaderColumn dataSort={true} dataField='ranking' width="100">Ranking</TableHeaderColumn> */}
-                            <TableHeaderColumn dataField='salary' width="100">Salary</TableHeaderColumn>
-                            <TableHeaderColumn dataField='qualifications' width="175">Qualifications</TableHeaderColumn>
+                            {/* <TableHeaderColumn dataField='salary' width="100">Salary</TableHeaderColumn> */}
+                            <TableHeaderColumn dataField='qualifications' width="300">Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn dataField='positions' width="300">Positions</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

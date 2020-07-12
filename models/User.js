@@ -20,6 +20,42 @@ const Schema = mongoose.Schema;
 //     return next();
 // });
 
+// const bcrypt = require("bcrypt");
+
+// module.exports.encrypt = (toBeHashed) => {
+//   console.log('password being hashed: ', toBeHashed)
+//   return new Promise(function(resolve, reject) {
+//     const saltRounds = 10;
+//     let hashed = "";
+//     bcrypt.genSalt(saltRounds, function(err, salt) {
+//       bcrypt.hash(toBeHashed, salt, function(err, hash) {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           hashed = hash;
+//           resolve(hashed);
+//         }
+//       });
+//     });
+//   })
+// }
+// const checkPasswordLoginAuthenticate = (enteredPassword, storedPassword, user) => {
+//   return new Promise((resolve, reject) => {
+//     bcrypt.compare(enteredPassword, storedPassword, (err, match) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         if (match) {
+//           resolve({ match: true });
+//         } else {
+//           resolve({ match: false });
+//         };
+//       };
+//     });
+//   });
+// };
+
+
  
  const User = new Schema({
     username: String,
@@ -32,3 +68,25 @@ const Schema = mongoose.Schema;
 const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
+
+
+//function
+// const bcrypt = require("bcrypt");
+
+// module.exports.encrypt = (toBeHashed) => {
+//   console.log('password being hashed: ', toBeHashed)
+//   return new Promise(function(resolve, reject) {
+//     const saltRounds = 10;
+//     let hashed = "";
+//     bcrypt.genSalt(saltRounds, function(err, salt) {
+//       bcrypt.hash(toBeHashed, salt, function(err, hash) {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           hashed = hash;
+//           resolve(hashed);
+//         }
+//       });
+//     });
+//   })
+// }

@@ -15,6 +15,7 @@ const CandidateSchema = new Schema({
     commute: String,
     status: String,
     salary: String,
+    position: String,
     // ranking: String,
     // photo: ?
 },
