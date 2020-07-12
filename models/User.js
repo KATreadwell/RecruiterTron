@@ -57,9 +57,9 @@ const Schema = mongoose.Schema;
 
 
  
- const User = new Schema({
+ const UserSchema = new Schema({
     username: String,
-    admin: boolean,
+    admin: Boolean,
     firstName: String,
     lastName: String,
     // userPhoto: ?

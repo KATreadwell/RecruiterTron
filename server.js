@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors')
-
 const app = express();
 //const path = require("path");
 const mongoose = require("mongoose");
@@ -78,7 +77,9 @@ db.once("connected", function () {
 //import models
 const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
-// const UserModel = require("./models/User");
+const UserModel = require("./models/User");
+const { isBuffer } = require("lodash");
+
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
@@ -92,7 +93,7 @@ app.get("/api", (req, res) => {
 
 //push candidate test data to dB
 app.post("/api/candidate", (req, res) => {
-  console.log('request object', req.body )
+  console.log("request object", req.body )
   const records = new CandidateModel(req.body);
   records.save((err, doc) => {
     if (err)
@@ -101,7 +102,7 @@ app.post("/api/candidate", (req, res) => {
   })
 })
 
-//route to get candidates + CRUD  
+//route to get candidates 
 app.get("/api/candidates", (req, res) => {
   CandidateModel.find({}, (err, doc) => {
     res.json({ data: doc, message: "Fetched all candidates." })
@@ -117,13 +118,14 @@ app.put("/api/candidate", (req, res) => {
       res.send(err)
     candidate.save(function(){
       if(!err)
-        res.json({data: candidate, message: 'Candidate updated successfully.'})
+        res.json({data: candidate, message: "Candidate updated successfully."})
     })
   })
 })
 
 //push position test data to dB
 app.post("/api/position", (req, res) => {
+  console.log("request object", req.body);
   const records = new PositionModel(req.body);
   records.save((err, doc) => {
     if (err)
@@ -132,13 +134,60 @@ app.post("/api/position", (req, res) => {
   })
 })
 
-//route to get position + CRUD  ***coworker says I should use router.route and re-write all of these app. to router.route
+//route to get position  
 app.get("/api/positions", (req, res) => {
   PositionModel.find({}, (err, doc) => {
     res.json({ data: doc, message: "Fetched all positions." })
   })
 })
 
+//update
+app.put("/api/position", (req, res) => {
+  PositionModel.findOneAndUpdate({
+    _id: req.body._id
+  }, req.body, {new:true}, function(err, position){
+    if(err)
+    res.send(err)
+    position.save(function(){
+      if(!err)
+      res.json({data: position, message: "Position updated successfully."})
+    })
+  }
+)}
+)
+
+//push user test data to dB
+app.post("/api/user", (req, res) => {
+  console.log("request object", req.body);
+  const records = new UserModel(req.body);
+  records.save((err, doc) => {
+    if (err)
+      res.send(err)
+    res.json({ data: doc, message: "Testy test, new user worked!" })
+  })
+})
+
+//route to get user
+app.get("/api/users", (req, res) => {
+  UserModel.find({}, (err, doc) => {
+    res.json({ data: doc, message: "Fetched all users." })
+  })
+})
+
+//update
+app.put("/api/user", (req, res) => {
+  UserModel.findOneAndUpdate({
+    _id: req.body._id
+  }, req.body, {new:true}, function(err, user){
+    if(err)
+    res.send(err)
+    user.save(function(){
+      if(!err)
+      res.json({data: position, message: "User updated successfully."})
+    })
+  }
+)}
+)
 
 // Send every request to the React app
 // Define any API routes before this runs

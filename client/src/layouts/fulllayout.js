@@ -6,6 +6,7 @@ import Sidebar from './layout-components/sidebar/sidebar';
 import Footer from './layout-components/footer/footer';
 import Customizer from './layout-components/customizer/customizer';
 import ThemeRoutes from '../routes/router';
+import sidebar from './layout-components/sidebar/sidebar';
 
 export default (props) => {
 
@@ -78,7 +79,7 @@ export default (props) => {
             <div className="page-wrapper d-block">
                 <div className="page-content container-fluid">
                     <Switch>
-                        {ThemeRoutes.map((prop, key) => {
+                        {sidebarRoutes.map((prop, key) => {
                             if (prop.navlabel) {
                                 return null;
                             }
