@@ -7,7 +7,8 @@ import './table.css';
 import axios from 'axios';
 
 function onAfterDeleteRow(rowKeys) {
-    alert('The rowkey you drop: ' + rowKeys);
+    // alert('The rowkey you drop: ' + rowKeys);
+  
 }
 
 function onAfterInsertRow(row) {
