@@ -3,6 +3,7 @@ import CandidateDatatable from '../views/tables/candidate-table';
 import PositionDatatable from '../views/tables/position-table';
 import Calendar from '../views/calendar/calendar';
 import Chartjs from '../views/charts/chartjs';
+import Admin from '../views/admin/admin';
 
 var ThemeRoutes = [
         // {
@@ -10,18 +11,7 @@ var ThemeRoutes = [
         // 	name: "Personal",
         // 	icon: "mdi mdi-dots-horizontal",
         // },
-        {
-                path: '/dashboard',
-                name: 'Dashboard',
-                icon: 'ti-dashboard',
-                child: [{
-                        path: "/dashboards/classic",
-                        name: "Classic",
-                        mini: "B",
-                        icon: "mdi mdi-adjust",
-                        component: Dashboard
-                }]
-        },
+
         // {
         // navlabel: true,
         // name: "Tables",
@@ -56,6 +46,24 @@ var ThemeRoutes = [
                 icon: 'mdi mdi-blur',
                 component: Chartjs
         },
-        { path: '/', pathTo: '/dashboard', name: 'Dashboard', redirect: true }
+        // {
+        //         path: '/dashboard',
+        //         name: 'Dashboard',
+        //         icon: 'ti-dashboard',
+        //         child: [{
+        //                 path: "/dashboards/classic",
+        //                 name: "Classic",
+        //                 mini: "B",
+        //                 icon: "mdi mdi-adjust",
+        //                 component: Dashboard
+        //         }]
+        // },
+        {
+                path: '/admin',
+                name: 'Admin',
+                icon: 'ti-ticket',
+                component: Admin
+        },
+        { path: '/', pathTo: '/home', name: 'Home', redirect: true }
 ];
 export default ThemeRoutes;

@@ -1,5 +1,18 @@
 import React from 'react';
+import {
+    Card,
+    CardBody,
 
-//I made this one from scratch Diarmuid!  No template!  Woo hoo!
+} from 'reactstrap';
 
+const Admin = () => {
+    return (
+        <Card>
+            <CardBody>
+                Start your project from here...
+				</CardBody>
+        </Card>
+    );
+}
 
+export default Admin;

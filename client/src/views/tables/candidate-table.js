@@ -13,8 +13,6 @@ function onAfterDeleteRow(rowKeys) {
 
 function onAfterInsertRow(row) {
     let newRowStr = {}; let testArray = []
-
-
     for (const prop in row) {
         //newRowStr += prop + ': ' + row[prop] + ',';
         newRowStr[prop]= row[prop]
@@ -40,11 +38,13 @@ function afterSearch(searchText, result) {
         console.log('Fruit: ' + result[i].id + ', ' + result[i].name + ', ' + result[i].price);
     }
 }
+
 const options = {
     afterInsertRow: onAfterInsertRow,  // A hook for after insert rows
     afterDeleteRow: onAfterDeleteRow,  // A hook for after droping rows.
     afterSearch: afterSearch  // define a after search hook
 };
+
 const selectRowProp = {
     mode: 'checkbox'
 };
