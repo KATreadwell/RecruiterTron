@@ -92,7 +92,7 @@ const Datatables = () => {
     //candidatesData is the variable, setCandidatesData is updating the state
      const [candidatesData, setCandidatesData] = useState([]);
      //manually hidding object id within table to assist with proper deletion instead of using name
-     const [hiddenId, setHiddenId] = useState(true)
+     const [hiddenId, setHiddenId] = useState(false)
     useEffect(() => {
        
         axios({
@@ -126,7 +126,8 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
                         >
-                             <TableHeaderColumn dataField='_id' isKey={ true } hidden={ hiddenId }>ID</TableHeaderColumn>
+                           
+                            <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='name' width="150">Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>

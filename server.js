@@ -79,7 +79,6 @@ const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
 const UserModel = require("./models/User");
 const { isBuffer } = require("lodash");
-const Candidate = require("./models/Candidate");
 
 
 // Serve up static assets (usually on heroku)
@@ -128,7 +127,7 @@ app.put("/api/candidate", (req, res) => {
 
 //Delete
 app.delete("/api/candidate", (req, res) =>
-  Candidate.findOneAndRemove({
+CandidateModel.findOneAndRemove({
     _id: req.body.id
   }, (err, candidate) => {
     if (err) {

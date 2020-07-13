@@ -20,7 +20,8 @@ const PositionSchema = new Schema({
     //     type: Number,
     //      min: 5,
     // },
-})
+}, {timestamps: true}
+)
 
 const Position = mongoose.model("Position", PositionSchema);
 

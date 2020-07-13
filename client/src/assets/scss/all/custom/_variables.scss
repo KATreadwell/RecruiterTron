@@ -3,13 +3,13 @@
 
 /*Theme Colors*/
 
-$themecolor: #2962ff;
+$themecolor: #002a5c;
 $themecolor-dark: #028ee1;
 $themecolor-alt: #26c6da;
 $theme-light: #fff;
 $theme-dark: #212529;
 
-$skin1: #2962ff;
+$skin1: #002a5c;
 $skin2: #fe5419;
 $skin3: #00b0ff;
 $skin4: #6659f7;
@@ -96,12 +96,12 @@ $cyan: #4fc3f7 !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
-    'primary': #30759e,
+    'primary': #002a5c,
     'secondary': $gray-600,
     'success': #2dce89,
-    'info': #2962ff,
+    'info': #002a5c,
     'warning': #fb6340,
-    'danger': #f62d51,
+    'danger': #BF3100,
     'light': $gray-100,
     'dark': $gray-800,
     'cyan': #4fc3f7,

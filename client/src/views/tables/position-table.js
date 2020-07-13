@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 // import * as jsondataPosition from './data-position-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
-import './table.css';
+//import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
+//import './table.css';
 import axios from 'axios';
 
 //This is for the Delete row  
@@ -14,7 +14,7 @@ function onAfterDeleteRow(rowKeys) {
 //This is for the insert new row
 
 function onAfterInsertRow(row) {
-  let newRowStr = {}; let testArray = []
+  let newRowStr = {};
   for (const prop in row) {
       newRowStr[prop]=row[prop]
   }
@@ -23,7 +23,7 @@ function onAfterInsertRow(row) {
 
   axios({
       method: 'post',
-      url: 'https://localhost:3333/api/position',
+      url: 'http://localhost:3333/api/position',
       headers: {
           'content-type': 'application/json',
       },
@@ -67,12 +67,7 @@ const Datatables = () => {
         
         axios({
             method: "GET",
-            url: "http://localhost:3333/api/position",
-            headers:{
-                //get around CORS issue
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
+            url: "http://localhost:3333/api/positions",
         })
         .then(result => {
             console.log("result", result);
@@ -86,7 +81,7 @@ const Datatables = () => {
                 <Card>
                     <CardBody>
                         <BootstrapTable striped hover
-                            condensed search={true}
+                            search={true}
                             data={positionsData && positionsData.data}
                             deleteRow={true}
                             selectRow={selectRowProp}
