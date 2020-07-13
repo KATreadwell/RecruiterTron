@@ -3,7 +3,7 @@ let jsondataUser = [
         "username": "KAT",
         "admin": true,
         "firstName": "Katherine",
-        "lastName": "Treadwell",
+        "lastName": "Treadwell"
     }
 ]
 

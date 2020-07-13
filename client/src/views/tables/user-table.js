@@ -27,7 +27,7 @@ function onAfterInsertRow(row) {
       headers: {
           'content-type': 'application/json',
       },
-      data: positionData
+      data: userData
   })
   .then(result => console.log('UI Result', result));
 
@@ -96,10 +96,10 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >   
-                            <TableHeaderColumn width='200' dataField='username' isKey>Username</TableHeaderColumn>
-                            <TableHeaderColumn width='200' dataField='firstName'>First Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='200' dataField='lastName'>Last Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='50' dataField='admin'>Admin</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='username' isKey>Username</TableHeaderColumn>
+                            <TableHeaderColumn width='100' dataField='firstName'>First Name</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

@@ -4,7 +4,7 @@ import PositionDatatable from '../views/tables/position-table';
 import Calendar from '../views/calendar/calendar';
 import Chartjs from '../views/charts/chartjs';
 import Admin from '../views/admin/admin';
-// import UserDatatable from '../views/tables/user-table';
+import UserDatatable from '../views/tables/user-table';
 
 
 var ThemeRoutes = {
@@ -65,7 +65,7 @@ var ThemeRoutes = {
                 path: '/admin',
                 name: 'Admin',
                 icon: 'ti-ticket',
-                component: Admin
+                component: UserDatatable
         },
 
         { path: '/', pathTo: '/home', name: 'Home', redirect: true }
