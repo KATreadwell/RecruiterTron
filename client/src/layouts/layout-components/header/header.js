@@ -14,6 +14,8 @@ import profilephoto from '../../../assets/images/users/1.jpg';
 
 //my ICS-branded images
 import ICEmailLogo from '../../../assets/images/ICEmailLogo.png';
+import ICLogo from '../../../assets/images/ICwhitelogo.png';
+
 
 export default () => {
 
@@ -357,7 +359,8 @@ export default () => {
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret className="pro-pic">
                                 <img
-                                    src={profilephoto}
+                                    // src={profilephoto}
+                                    src={ICLogo}
                                     alt="user"
                                     className="rounded-circle"
                                     width="31"

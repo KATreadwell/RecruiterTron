@@ -9,6 +9,30 @@ import {
 } from 'reactstrap';
 import * as d from './chartjs-data';
 
+//CANDIDATES TO POSITIONS
+//Pie Chart
+var pieData = {
+    labels: [
+        'Green',
+        // 'Yellow',
+        'Blue'
+    ],
+    datasets: [{
+        data: d.chartData.pieData.data,
+        backgroundColor: [
+            '#2dce89',
+            // '#ffc107',
+            '#23b7e5'
+        ],
+        hoverBackgroundColor: [
+            '#2dce89',
+            // '#ffc107',
+            '#23b7e5'
+        ]
+    }]
+}
+
+
 //Doughnut Chart
 const doughnutData = {
     labels: [
@@ -38,27 +62,6 @@ const doughnutData = {
     }]
 };
 
-//Pie Chart
-var pieData = {
-    labels: [
-        'Green',
-        'Yellow',
-        'Blue'
-    ],
-    datasets: [{
-        data: d.chartData.pieData.data,
-        backgroundColor: [
-            '#2dce89',
-            '#5e72e4',
-            '#23b7e5'
-        ],
-        hoverBackgroundColor: [
-            '#2dce89',
-            '#5e72e4',
-            '#23b7e5'
-        ]
-    }]
-}
 
 //Bar Chart
 var barData = {

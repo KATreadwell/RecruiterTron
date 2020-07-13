@@ -18,7 +18,7 @@ export default () => {
             {/*--------------------------------------------------------------------------------*/}
             {/* Toggle Customizer From Here                                                    */}
             {/*--------------------------------------------------------------------------------*/}
-            <span className="service-panel-toggle text-white" onClick={toggle.bind(null)}><i className="fa fa-spin fa-cog"></i></span>
+            {/* <span className="service-panel-toggle text-white" onClick={toggle.bind(null)}><i className="fa fa-spin fa-cog"></i></span> */}
             <PerfectScrollbar>
                 <div className="customizer-body">
                     <div className="mt-3 border-bottom px-3">

@@ -96,8 +96,8 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >   
-                            <TableHeaderColumn width='100' dataField='username' isKey>Username</TableHeaderColumn>
-                            <TableHeaderColumn width='100' dataField='firstName'>First Name</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn>
                         </BootstrapTable>

@@ -49,6 +49,14 @@ const selectRowProp = {
     mode: 'checkbox'
 };
 
+//update - use cellEditProp
+function onAfterSaveCell(row, cellName, cellValue) {
+    let rowStr = '';
+  for (const prop in row) {
+    rowStr += prop + ': ' + row[prop] + '\n';
+  }
+}
+
 const cellEditProp = {
     mode: 'click',
     blurToSave: true
@@ -90,16 +98,16 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
                         >
-                            <TableHeaderColumn dataField='name' width="150" isKey>Name</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='name' width="150" isKey>Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
-                            <TableHeaderColumn dataField='phone' width="150">Phone</TableHeaderColumn>
-                            <TableHeaderColumn dataField='email' width="150">Email</TableHeaderColumn>
-                            <TableHeaderColumn dataField='address' width="200">Address</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='email' width="150">Email</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='address' width="150">Address</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='experience' width="100">Security Exp (yrs)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='commute' width="100">Max Commute (mi)</TableHeaderColumn>
                             {/* <TableHeaderColumn dataSort={true} dataField='ranking' width="100">Ranking</TableHeaderColumn> */}
                             {/* <TableHeaderColumn dataField='salary' width="100">Salary</TableHeaderColumn> */}
-                            <TableHeaderColumn dataField='qualifications' width="300">Qualifications</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='qualifications' width="200">Qualifications</TableHeaderColumn>
                             {/* <TableHeaderColumn dataField='positions' width="300">Positions</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>

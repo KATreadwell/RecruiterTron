@@ -79,6 +79,7 @@ const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
 const UserModel = require("./models/User");
 const { isBuffer } = require("lodash");
+const Candidate = require("./models/Candidate");
 
 
 // Serve up static assets (usually on heroku)
@@ -91,9 +92,11 @@ app.get("/api", (req, res) => {
   res.json({ message: "Time to recruit some folks!" })
 })
 
+//CANDIDATE ROUTES
+
 //push candidate test data to dB
 app.post("/api/candidate", (req, res) => {
-  console.log("request object", req.body )
+  console.log("request object", req.body)
   const records = new CandidateModel(req.body);
   records.save((err, doc) => {
     if (err)
@@ -113,15 +116,31 @@ app.get("/api/candidates", (req, res) => {
 app.put("/api/candidate", (req, res) => {
   CandidateModel.findOneAndUpdate({
     _id: req.body._id
-  }, req.body, {new:true}, function(err, candidate){
-    if(err)
+  }, req.body, { new: true }, function (err, candidate) {
+    if (err)
       res.send(err)
-    candidate.save(function(){
-      if(!err)
-        res.json({data: candidate, message: "Candidate updated successfully."})
+    candidate.save(function () {
+      if (!err)
+        res.json({ data: candidate, message: "Candidate updated successfully." })
     })
   })
 })
+
+//Delete
+app.delete("/api/candidate/:id", (req, res) =>
+  Candidate.findOneAndRemove({
+    _id: req.params.id
+  }, (err, candidate) => {
+    if (err) {
+      res.send("deletion fail")
+    } else {
+      console.log(candidate);
+      res.status(204)
+    }
+  }))
+
+
+//POSITION ROUTES
 
 //push position test data to dB
 app.post("/api/position", (req, res) => {
@@ -145,16 +164,19 @@ app.get("/api/positions", (req, res) => {
 app.put("/api/position", (req, res) => {
   PositionModel.findOneAndUpdate({
     _id: req.body._id
-  }, req.body, {new:true}, function(err, position){
-    if(err)
-    res.send(err)
-    position.save(function(){
-      if(!err)
-      res.json({data: position, message: "Position updated successfully."})
+  }, req.body, { new: true }, function (err, position) {
+    if (err)
+      res.send(err)
+    position.save(function () {
+      if (!err)
+        res.json({ data: position, message: "Position updated successfully." })
     })
   }
-)}
+  )
+}
 )
+
+//USER ROUTES
 
 //push user test data to dB
 app.post("/api/user", (req, res) => {
@@ -178,15 +200,16 @@ app.get("/api/users", (req, res) => {
 app.put("/api/user", (req, res) => {
   UserModel.findOneAndUpdate({
     _id: req.body._id
-  }, req.body, {new:true}, function(err, user){
-    if(err)
-    res.send(err)
-    user.save(function(){
-      if(!err)
-      res.json({data: position, message: "User updated successfully."})
+  }, req.body, { new: true }, function (err, user) {
+    if (err)
+      res.send(err)
+    user.save(function () {
+      if (!err)
+        res.json({ data: position, message: "User updated successfully." })
     })
   }
-)}
+  )
+}
 )
 
 // Send every request to the React app
