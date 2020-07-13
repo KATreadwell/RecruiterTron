@@ -78,7 +78,7 @@ db.once("connected", function () {
 const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
 const UserModel = require("./models/User");
-const { isBuffer } = require("lodash");
+// const { isBuffer } = require("lodash");
 
 
 // Serve up static assets (usually on heroku)
@@ -91,8 +91,8 @@ app.get("/api", (req, res) => {
   res.json({ message: "Time to recruit some folks!" })
 })
 
-//CANDIDATE ROUTES
 
+//CANDIDATE ROUTES
 //push candidate test data to dB
 app.post("/api/candidate", (req, res) => {
   console.log("request object", req.body)
@@ -140,7 +140,6 @@ CandidateModel.findOneAndRemove({
 
 
 //POSITION ROUTES
-
 //push position test data to dB
 app.post("/api/position", (req, res) => {
   console.log("request object", req.body);
@@ -159,7 +158,7 @@ app.get("/api/positions", (req, res) => {
   })
 })
 
-//update
+//Update
 app.put("/api/position", (req, res) => {
   PositionModel.findOneAndUpdate({
     _id: req.body._id
@@ -170,13 +169,24 @@ app.put("/api/position", (req, res) => {
       if (!err)
         res.json({ data: position, message: "Position updated successfully." })
     })
+  })
+})
+
+//Delete
+app.delete("/api/position", (req, res) => 
+PositionModel.findOneAndRemove({
+  _id: req.body.id
+}, (err, position) => {
+  if (err) {
+    res.send("deletion fail")
+  } else {
+    console.log(position);
+    res.status(204).json({message: "Position deleted successfuly."})
   }
-  )
-}
-)
+}))
+
 
 //USER ROUTES
-
 //push user test data to dB
 app.post("/api/user", (req, res) => {
   console.log("request object", req.body);

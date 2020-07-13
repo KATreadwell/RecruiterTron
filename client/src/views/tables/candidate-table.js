@@ -7,7 +7,6 @@ import './table.css';
 import axios from 'axios';
 
 function onAfterDeleteRow(rowKeys) {
-    // alert('The rowkey you drop: ' + rowKeys);
     console.log('delete row', rowKeys);
     axios({
         method: 'delete',
@@ -19,15 +18,12 @@ function onAfterDeleteRow(rowKeys) {
             id: rowKeys
         }
     })
-    .then(result => console.log('UI deleted Record', result));
-
-  
+    .then(result => console.log('browser deleted record', result));
 }
 
 function onAfterInsertRow(row) {
-    let newRowStr = {}; let testArray = []
+    let newRowStr = {}
     for (const prop in row) {
-        //newRowStr += prop + ': ' + row[prop] + ',';
         newRowStr[prop]=row[prop]
     }
     console.log(newRowStr);
@@ -41,21 +37,21 @@ function onAfterInsertRow(row) {
        },
         data: candidateData
     })
-    .then(result => console.log('UI Result', result));
+    .then(result => console.log('Browser', result));
 }
 
 function afterSearch(searchText, result) {
     console.log('Your search text is ' + searchText);
     console.log('Result is:');
     for (let i = 0; i < result.length; i++) {
-        console.log('Fruit: ' + result[i].id + ', ' + result[i].name + ', ' + result[i].price);
+        console.log('Result: ' + result[i].id + ', ' + result[i].name);
     }
 }
 
 const options = {
-    afterInsertRow: onAfterInsertRow,  // A hook for after insert rows
-    afterDeleteRow: onAfterDeleteRow,  // A hook for after droping rows.
-    afterSearch: afterSearch  // define a after search hook
+    afterInsertRow: onAfterInsertRow,  
+    afterDeleteRow: onAfterDeleteRow,  
+    afterSearch: afterSearch  
 };
 
 const selectRowProp = {
@@ -74,11 +70,11 @@ const onAfterSaveCell = (row, cellName, cellValue) => {
       method: 'put',
       url: 'http://localhost:3333/api/candidate',
       headers: {
-          'content-type': 'application/json',
+          'content-type': 'application/json'
      },
       data: candidateData
   })
-  .then(result => console.log('UI Result', result));
+  .then(result => console.log('result', result));
 }
 
 //http://allenfang.github.io/react-bootstrap-table/example.html#celledit
@@ -91,7 +87,7 @@ const cellEditProp = {
 const Datatables = () => {
     //candidatesData is the variable, setCandidatesData is updating the state
      const [candidatesData, setCandidatesData] = useState([]);
-     //manually hidding object id within table to assist with proper deletion instead of using name
+     //manually hiding object id within table to assist with proper deletion instead of using name
      const [hiddenId, setHiddenId] = useState(false)
     useEffect(() => {
        
@@ -125,9 +121,9 @@ const Datatables = () => {
                             options={options}
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
-                        >
-                           
-                            <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn>
+                        >              
+                            {/* <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn> */}
+                            <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='name' width="150">Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>
