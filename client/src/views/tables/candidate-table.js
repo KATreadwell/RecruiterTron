@@ -50,16 +50,29 @@ const selectRowProp = {
 };
 
 //update - use cellEditProp
-function onAfterSaveCell(row, cellName, cellValue) {
-    let rowStr = '';
+const onAfterSaveCell = (row, cellName, cellValue) => {
+    let rowStr = {};
   for (const prop in row) {
-    rowStr += prop + ': ' + row[prop] + '\n';
+    rowStr[prop]=row[prop]
   }
+  console.log('updated row', rowStr);
+  const candidateData=JSON.stringify(rowStr)
+  axios({
+      method: 'put',
+      url: 'http://localhost:3333/api/candidate',
+      headers: {
+          'content-type': 'application/json',
+     },
+      data: candidateData
+  })
+  .then(result => console.log('UI Result', result));
 }
 
+//http://allenfang.github.io/react-bootstrap-table/example.html#celledit
 const cellEditProp = {
     mode: 'click',
-    blurToSave: true
+    blurToSave: true,
+    afterSaveCell: onAfterSaveCell
 };
 
 const Datatables = () => {
