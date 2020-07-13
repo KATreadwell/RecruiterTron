@@ -8,6 +8,19 @@ import axios from 'axios';
 
 function onAfterDeleteRow(rowKeys) {
     // alert('The rowkey you drop: ' + rowKeys);
+    console.log('delete row', rowKeys);
+    axios({
+        method: 'delete',
+        url: 'http://localhost:3333/api/candidate',
+        headers: {
+            'content-type': 'application/json',
+       },
+        data: {
+            id: rowKeys
+        }
+    })
+    .then(result => console.log('UI deleted Record', result));
+
   
 }
 
@@ -78,6 +91,8 @@ const cellEditProp = {
 const Datatables = () => {
     //candidatesData is the variable, setCandidatesData is updating the state
      const [candidatesData, setCandidatesData] = useState([]);
+     //manually hidding object id within table to assist with proper deletion instead of using name
+     const [hiddenId, setHiddenId] = useState(true)
     useEffect(() => {
        
         axios({
@@ -111,7 +126,8 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
                         >
-                            <TableHeaderColumn dataSort={true} dataField='name' width="150" isKey>Name</TableHeaderColumn>
+                             <TableHeaderColumn dataField='_id' isKey={ true } hidden={ hiddenId }>ID</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='name' width="150">Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='email' width="150">Email</TableHeaderColumn>

@@ -127,15 +127,15 @@ app.put("/api/candidate", (req, res) => {
 })
 
 //Delete
-app.delete("/api/candidate/:id", (req, res) =>
+app.delete("/api/candidate", (req, res) =>
   Candidate.findOneAndRemove({
-    _id: req.params.id
+    _id: req.body.id
   }, (err, candidate) => {
     if (err) {
       res.send("deletion fail")
     } else {
       console.log(candidate);
-      res.status(204)
+      res.status(204).json({message: "Candidate deleted successfully."})
     }
   }))
 
