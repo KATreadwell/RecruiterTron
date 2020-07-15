@@ -15,7 +15,7 @@ function onAfterDeleteRow(rowKeys) {
            'content-type': 'application/json',
        },
        data: {
-           id: rowKeys
+           username: rowKeys
        }
    })
    .then(result => console.log('browser deleted record', result));
@@ -37,7 +37,7 @@ function onAfterInsertRow(row) {
       },
       data: userData
   })
-  .then(result => console.log('UI Result', result));
+  .then(result => console.log('Browser', result));
 
 //   for (const prop in row) {
 //     newRowStr += prop + ': ' + row[prop] + ' \n';
@@ -63,19 +63,39 @@ const selectRowProp = {
     mode: 'checkbox'
 };
 
+const onAfterSaveCell = (row, cellName, cellValue) => {
+    let rowStr = {};
+    for (const prop in row) {
+        rowStr[prop]=row[prop]
+    }
+    console.log('updated row', rowStr);
+    const userData=JSON.stringify(rowStr)
+    axios({
+        method: 'put',
+        url: '/api/user',
+        headers: {
+            'content-type': 'application/json'
+        },
+        data: userData
+    })
+    .then(result => console.log('result', result))
+}
+
 const cellEditProp = {
     mode: 'click',
-    blurToSave: true
+    blurToSave: true,
+    afterSaveCell: onAfterSaveCell
 };
 
 const Datatables = () => {
-    //positionsData is the variable, setPositionsData is updating the state
+    //usersData is the variable, setUsersData is updating the state
     const [usersData, setUsersData] = useState([]);
+    const [hiddenId, setHiddenId] = useState(false)
     useEffect(() => {
         
         axios({
             method: "GET",
-            url: "/api/user",
+            url: "/api/users",
             headers:{
                 //get around CORS issue
                 "Content-Type": "application/json",
@@ -104,11 +124,11 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >   
-                            <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn>
-                            {/* <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn> */}
+                        <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
+                        <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
+                        <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
+                        <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn>
+                        {/* <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>

@@ -17,7 +17,7 @@ function onAfterDeleteRow(rowKeys) {
             'content-type': 'application/json',
         },
         data: {
-            id: rowKeys
+            req: rowKeys
         }
     })
     .then(result => console.log('browser deleted record', result));

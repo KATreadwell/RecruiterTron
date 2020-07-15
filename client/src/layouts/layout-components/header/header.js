@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Nav, NavItem, NavLink, Button, Navbar, NavbarBrand, Collapse, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledCarousel, Progress, ListGroup, ListGroupItem, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import * as data from './data';
+import chartjs from 'chart.js';
+// import {piePositionData} from '../../../views/charts/chartjs';
 
 /*--------------------------------------------------------------------------------*/
 /* Import images which are need for the HEADER                                    */
@@ -121,8 +123,8 @@ export default () => {
                                             <span>Positions Open vs Closed</span>
                                             <div className="ml-auto">
                                                 <span className="text-primary">
-                                                    
-                                                    {/* <i className="mdi mdi-chart-areaspline" /> */}
+                                                    {/* {piePositionData}
+                                                    <i className="mdi mdi-chart-areaspline" /> */}
                                                 </span>
                                             </div>
                                         </div>

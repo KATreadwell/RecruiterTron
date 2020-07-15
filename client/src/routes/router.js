@@ -5,6 +5,7 @@ import Calendar from '../views/calendar/calendar';
 import Chartjs from '../views/charts/chartjs';
 import Admin from '../views/admin/admin';
 import UserDatatable from '../views/tables/user-table';
+import Google from '../views/google/google';
 
 
 var ThemeRoutes = {
@@ -22,11 +23,17 @@ var ThemeRoutes = {
                 component: PositionDatatable
         },
         {
-                path: '/calendar',
-                name: 'Calendar',
-                icon: 'mdi mdi-calendar',
-                component: Calendar
+                path: '/google',
+                name: 'Google Maps',
+                icon: 'mdi mdi-google-maps',
+                component: Google
         },
+        // {
+        //         path: '/calendar',
+        //         name: 'Calendar',
+        //         icon: 'mdi mdi-calendar',
+        //         component: Calendar
+        // },
         {
                 path: '/charts/chartjs',
                 name: 'Reports',
@@ -34,7 +41,7 @@ var ThemeRoutes = {
                 component: Chartjs
         },
         {
-                path: '/users',
+                path: '/admin',
                 name: 'Admin',
                 icon: 'ti-ticket',
                 component: UserDatatable

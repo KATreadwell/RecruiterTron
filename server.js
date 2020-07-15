@@ -202,7 +202,7 @@ app.post("/api/user", (req, res) => {
   })
 })
 
-//route to get user
+//route to get users
 app.get("/api/users", (req, res) => {
   UserModel.find({}, (err, doc) => {
     res.json({ data: doc, message: "Fetched all users." })
@@ -212,7 +212,8 @@ app.get("/api/users", (req, res) => {
 //update
 app.put("/api/user", (req, res) => {
   UserModel.findOneAndUpdate({
-    _id: req.body._id
+    // _id: req.body._id
+    username: req.body.username
   }, req.body, { new: true }, function (err, user) {
     if (err)
       res.send(err)
@@ -220,10 +221,23 @@ app.put("/api/user", (req, res) => {
       if (!err)
         res.json({ data: position, message: "User updated successfully." })
     })
+  })
+})
+
+//Delete
+app.delete("/api/user", (req, res) => 
+PositionModel.findOneAndRemove({
+  // _id: req.body.id
+  username: req.body.username
+}, (err, position) => {
+  if (err) {
+    res.send("deletion fail")
+  } else {
+    console.log(position);
+    res.status(204).json({message: "User deleted successfuly."})
   }
-  )
-}
-)
+}))
+
 
 // Send every request to the React app
 // Define any API routes before this runs

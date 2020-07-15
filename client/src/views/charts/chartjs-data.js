@@ -3,12 +3,28 @@ let rFactor = function () {
     return Math.round(Math.random() * 100);
 };
 
+function addPieData (chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+}
+
 const chartData = {
     doughnutData: {
         data: [400, 50, 100, 80, 150]
     },
     pieData: {
-        data: [300, 50, 100]
+        data: [300, 100]
     },
     barData: {
         data: {

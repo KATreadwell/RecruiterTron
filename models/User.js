@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const UserSchema = new Schema({
+   username: String,
+  //  admin: Boolean,
+   firstName: String,
+   lastName: String,
+   password: String,
+})
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
+
 // const UserSchema.pre("save", function (next) {
 //     let user = this;
 //     if (this.isModified("password") || this.isNew) {
@@ -57,17 +69,7 @@ const Schema = mongoose.Schema;
 
 
  
- const UserSchema = new Schema({
-    username: String,
-   //  admin: Boolean,
-    firstName: String,
-    lastName: String,
-    password: String,
- })
-
-const User = mongoose.model("User", UserSchema);
-
-module.exports = User;
+ 
 
 
 //function

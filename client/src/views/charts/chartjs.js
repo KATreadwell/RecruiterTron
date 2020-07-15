@@ -9,134 +9,135 @@ import {
 } from 'reactstrap';
 import * as d from './chartjs-data';
 
-//Positions: Open vs Closed
-
-
-
-
-//Pie Chart
-var pieData = {
+//Open vs Closed Positions
+var piePositionData = {
     labels: [
-        'Green',
+        'Open Positions',
         // 'Yellow',
-        'Blue'
+        'Closed Positions'
     ],
     datasets: [{
         data: d.chartData.pieData.data,
         backgroundColor: [
-            '#2dce89',
+            '#4fc3f7',
             // '#ffc107',
-            '#23b7e5'
+            '#2962ff'
         ],
         hoverBackgroundColor: [
-            '#2dce89',
+            '#30ade6',
             // '#ffc107',
-            '#23b7e5'
+            '#092e94'
+        ]
+    }]
+}
+
+var pieCandidateData = {
+    labels: [
+        'Open Positions',
+        // 'Yellow',
+        'Closed Positions'
+    ],
+    datasets: [{
+        data: d.chartData.pieData.data,
+        backgroundColor: [
+            '#4fc3f7',
+            // '#ffc107',
+            '#2962ff'
+        ],
+        hoverBackgroundColor: [
+            '#30ade6',
+            // '#ffc107',
+            '#092e94'
         ]
     }]
 }
 
 
 //Doughnut Chart
-const doughnutData = {
-    labels: [
-        'Red',
-        'Blue',
-        'Yellow',
-        'Green',
-        'Orange'
-    ],
+// const doughnutData = {
+//     labels: [
+//         'Red',
+//         'Blue',
+//         'Yellow',
+//         'Green',
+//         'Orange'
+//     ],
 
-    datasets: [{
-        data: d.chartData.doughnutData.data,
-        backgroundColor: [
-            '#dc3545',
-            '#2962ff',
-            '#fb6340',
-            '#2dce89',
-            '#4fc3f7'
-        ],
-        hoverBackgroundColor: [
-            '#dc3545',
-            '#2962ff',
-            '#fb6340',
-            '#2dce89',
-            '#4fc3f7'
-        ]
-    }]
-};
+//     datasets: [{
+//         data: d.chartData.doughnutData.data,
+//         backgroundColor: [
+//             '#dc3545',
+//             '#2962ff',
+//             '#fb6340',
+//             '#2dce89',
+//             '#4fc3f7'
+//         ],
+//         hoverBackgroundColor: [
+//             '#dc3545',
+//             '#2962ff',
+//             '#fb6340',
+//             '#2dce89',
+//             '#4fc3f7'
+//         ]
+//     }]
+// };
 
 
 //Bar Chart
 var barData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['DMV', 'Wells Fargo', 'SCE', 'DoS', 'DGS'],
     datasets: [{
-        label: 'Apple',
-        backgroundColor: '#2962ff',
-        borderColor: '#2962ff',
+        label: 'Open',
+        backgroundColor: '#4fc3f7',
+        borderColor: '#4fc3f7',
         data: d.chartData.barData.data.a
     },
     {
-        label: 'Google',
-        backgroundColor: '#4fc3f7',
-        borderColor: '#4fc3f7',
+        label: 'Closed',
+        backgroundColor: '#2962ff',
+        borderColor: '#2962ff',
         data: d.chartData.barData.data.b
     }]
 };
 
-//Line chart
-var lineData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-        label: 'Income',
-        backgroundColor: 'rgb(79, 195, 247)',
-        borderColor: 'rgb(79, 195, 247)',
-        pointBorderColor: '#fff',
-        data: d.chartData.lineData.data.a
-    }, {
-        label: 'Outcome',
-        backgroundColor: 'rgb(246, 249, 252)',
-        borderColor: 'rgb(246, 249, 252)',
-        pointBorderColor: '#fff',
-        data: d.chartData.lineData.data.b
-    }]
-};
 
-// Rader Chart
+
+// Radar Chart
 var radarData = {
-    labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+    labels: ['Los Angeles', 'Pasadena', 'Santa Monica', 'Azusa', 'Glendale'],
     datasets: [{
-        label: 'Apple',
-        backgroundColor: 'rgba(246, 45, 81,0.2)',
-        borderColor: 'rgba(246, 45, 81,1)',
+        label: 'Candidates',
+        backgroundColor: '#4fc3f7',
+        borderColor: '#2962ff',
         data: d.chartData.radarData.data.a
-    }, {
-        label: 'Google',
-        backgroundColor: 'rgba(45, 206, 137,0.2)',
-        borderColor: 'rgba(45, 206, 137,1)',
-        data: d.chartData.radarData.data.b
     }]
+    // }, {
+    //     label: 'Google',
+    //     backgroundColor: 'rgba(45, 206, 137,0.2)',
+    //     borderColor: 'rgba(45, 206, 137,1)',
+    //     data: d.chartData.radarData.data.b
+    // }]
 };
 
 //Polar Chart
-var polarData = {
-    datasets: [{
-        data: d.chartData.polarData.data,
-        backgroundColor: [
-            '#dc3545',
-            '#2962ff',
-            '#fb6340',
-            '#2dce89'
-        ],
-        label: 'My dataset'
-    }],
-    labels: [
-        'Label 1',
-        'Label 2',
-        'Label 3',
-        'Label 4'
-    ]
-};
+// var polarData = {
+//     datasets: [{
+//         data: d.chartData.polarData.data,
+//         backgroundColor: [
+//             '#dc3545',
+//             '#2962ff',
+//             '#fb6340',
+//             '#2dce89'
+//         ],
+//         label: 'My dataset'
+//     }],
+//     labels: [
+//         'Label 1',
+//         'Label 2',
+//         'Label 3',
+//         'Label 4'
+//     ]
+// };
 
 
 const Chartjs = () => {
@@ -148,9 +149,9 @@ const Chartjs = () => {
             <Col md="6">
                 <Card>
                     <CardBody>
-                        <CardTitle>Pie Chart</CardTitle>
+                        <CardTitle>Positions: Open to Closed</CardTitle>
                         <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                            <Pie data={pieData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
+                            <Pie data={piePositionData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
                         </div>
                     </CardBody>
                 </Card>
@@ -158,7 +159,7 @@ const Chartjs = () => {
             <Col md="6">
                 <Card>
                     <CardBody>
-                        <CardTitle>Bar Chart</CardTitle>
+                        <CardTitle>Positions Status by Client</CardTitle>
                         <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
                             <Bar data={barData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] } }} />
                         </div>
@@ -168,14 +169,24 @@ const Chartjs = () => {
             <Col md="6">
                 <Card>
                     <CardBody>
+                        <CardTitle>Candidates: Interview to Hired</CardTitle>
+                        <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
+                            <Pie data={pieCandidateData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
+                        </div>
+                    </CardBody>
+                </Card>
+            </Col>
+            {/* <Col md="6">
+                <Card>
+                    <CardBody>
                         <CardTitle>Doughnut Chart</CardTitle>
                         <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
                             <Doughnut data={doughnutData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
                         </div>
                     </CardBody>
                 </Card>
-            </Col>
-            <Col md="6">
+            </Col> */}
+            {/* <Col md="6">
                 <Card>
                     <CardBody>
                         <CardTitle>Line Chart</CardTitle>
@@ -184,8 +195,8 @@ const Chartjs = () => {
                         </div>
                     </CardBody>
                 </Card>
-            </Col>
-            <Col md="6">
+            </Col> */}
+            {/* <Col md="6">
                 <Card>
                     <CardBody>
                         <CardTitle>Polar Chart</CardTitle>
@@ -194,11 +205,11 @@ const Chartjs = () => {
                         </div>
                     </CardBody>
                 </Card>
-            </Col>
+            </Col> */}
             <Col md="6">
                 <Card>
                     <CardBody>
-                        <CardTitle>Radar Chart</CardTitle>
+                        <CardTitle>Candidate Distribution by City</CardTitle>
                         <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
                             <Radar data={radarData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
                         </div>
@@ -213,3 +224,6 @@ const Chartjs = () => {
 }
 
 export default Chartjs;
+// export {piePositionData};
+
+
