@@ -1,6 +1,6 @@
 {
   "name": "recruiter-tron",
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:git add /",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
