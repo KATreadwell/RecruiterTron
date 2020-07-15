@@ -12,7 +12,7 @@ function onAfterDeleteRow(rowKeys) {
     console.log('delete row', rowKeys);
     axios({
         method: 'delete',
-        url: 'http://localhost:3333/api/position',
+        url: '/api/position',
         headers: {
             'content-type': 'application/json',
         },
@@ -33,7 +33,7 @@ function onAfterInsertRow(row) {
 
   axios({
       method: 'post',
-      url: 'http://localhost:3333/api/position',
+      url: '/api/position',
       headers: {
           'content-type': 'application/json',
       },
@@ -69,7 +69,7 @@ const onAfterSaveCell = (row, cellName, cellValue) => {
     const positionData=JSON.stringify(rowStr)
     axios({
         method: 'put',
-        url: 'http://localhost:3333/api/position',
+        url: '/api/position',
         headers: {
             'content-type': 'application/json'
         },
@@ -93,7 +93,7 @@ const Datatables = () => {
         
         axios({
             method: "GET",
-            url: "http://localhost:3333/api/positions",
+            url: "/api/positions",
             headers:{
                 //evil CORS
                 "Content-Type": "application/json",
@@ -123,7 +123,8 @@ const Datatables = () => {
                             tableHeaderClass='mb-0'
                         >   
                             {/* <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn> */}
-                            <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn>
+                            {/* <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn> */}
+                            <TableHeaderColumn dataSort={true} width='150' dataField='req' isKey>Job Requisition #</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='150' dataField='title'>Title</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='status'>Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='priority'>Priority</TableHeaderColumn>

@@ -9,7 +9,11 @@ import {
 } from 'reactstrap';
 import * as d from './chartjs-data';
 
-//CANDIDATES TO POSITIONS
+//Positions: Open vs Closed
+
+
+
+
 //Pie Chart
 var pieData = {
     labels: [

@@ -10,6 +10,7 @@ const PositionSchema = new Schema({
     location: String,
     client: String,
     priority: String,
+    req: String
     // candidates: String
     // salary: {type: String, required: true},
     // address: String,

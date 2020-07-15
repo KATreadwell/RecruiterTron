@@ -10,12 +10,12 @@ function onAfterDeleteRow(rowKeys) {
     console.log('delete row', rowKeys);
     axios({
         method: 'delete',
-        url: 'http://localhost:3333/api/candidate',
+        url: '/api/candidate',
         headers: {
             'content-type': 'application/json',
        },
         data: {
-            id: rowKeys
+            email: rowKeys
         }
     })
     .then(result => console.log('browser deleted record', result));
@@ -31,7 +31,7 @@ function onAfterInsertRow(row) {
 
     axios({
         method: 'post',
-        url: 'http://localhost:3333/api/candidate',
+        url: '/api/candidate',
         headers: {
             'content-type': 'application/json',
        },
@@ -68,7 +68,7 @@ const onAfterSaveCell = (row, cellName, cellValue) => {
   const candidateData=JSON.stringify(rowStr)
   axios({
       method: 'put',
-      url: 'http://localhost:3333/api/candidate',
+      url: '/api/candidate',
       headers: {
           'content-type': 'application/json'
      },
@@ -93,7 +93,7 @@ const Datatables = () => {
        
         axios({
             method: "GET",
-            url: "http://localhost:3333/api/candidates",
+            url: "/api/candidates",
             headers:{
                 //to get around CORS issue
                 "Content-Type": "application/json",
@@ -123,11 +123,11 @@ const Datatables = () => {
                             tableHeaderClass='mb-0'   
                         >              
                             {/* <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn> */}
-                            <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn>
+                            {/* <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn> */}
                             <TableHeaderColumn dataSort={true} dataField='name' width="150">Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} dataField='email' width="150">Email</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='email' width="150" isKey>Email</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='address' width="150">Address</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='experience' width="100">Security Exp (yrs)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='commute' width="100">Max Commute (mi)</TableHeaderColumn>

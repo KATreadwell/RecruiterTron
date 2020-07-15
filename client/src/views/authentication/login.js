@@ -46,14 +46,14 @@ const Login = (props) => {
                     <div className="logo">
                         <span className="db"><img src={ICEmailLogo} alt="ICEmailLogo" /></span>
                         <h5 className="font-medium mb-3" id="signin">Sign in to the RecruiterTron!</h5>
-                        <div className="alert alert-success">Username: test  Password: test</div>
+                        {/* <div className="alert alert-success">Username: test  Password: test</div> */}
                     </div>
                     <Row>
                         <Col xs="12">
                             <Formik
                                 initialValues={{
-                                    username: 'test',
-                                    password: 'test'
+                                    // username: 'test',
+                                    // password: 'test'
                                 }}
                                 validationSchema={Yup.object().shape({
                                     username: Yup.string().required('Username is required'),

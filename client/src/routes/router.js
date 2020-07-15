@@ -9,17 +9,6 @@ import UserDatatable from '../views/tables/user-table';
 
 var ThemeRoutes = {
         Admin: [
-        // {
-        // 	navlabel: true,
-        // 	name: "Personal",
-        // 	icon: "mdi mdi-dots-horizontal",
-        // },
-
-        // {
-        // navlabel: true,
-        // name: "Tables",
-        // icon: "mdi mdi-dots-horizontal",
-        // },
         {
                 path: '/tables/candidate',
                 name: 'Candidate',
@@ -32,11 +21,6 @@ var ThemeRoutes = {
                 icon: 'mdi mdi-border-inside',
                 component: PositionDatatable
         },
-        // {
-        // navlabel: true,
-        // name: "Calendar",
-        // icon: "mdi mdi-dots-horizontal",
-        // },
         {
                 path: '/calendar',
                 name: 'Calendar',
@@ -49,20 +33,8 @@ var ThemeRoutes = {
                 icon: 'mdi mdi-blur',
                 component: Chartjs
         },
-        // {
-        //         path: '/dashboard',
-        //         name: 'Dashboard',
-        //         icon: 'ti-dashboard',
-        //         child: [{
-        //                 path: "/dashboards/classic",
-        //                 name: "Classic",
-        //                 mini: "B",
-        //                 icon: "mdi mdi-adjust",
-        //                 component: Dashboard
-        //         }]
-        // },
         {
-                path: '/admin',
+                path: '/users',
                 name: 'Admin',
                 icon: 'ti-ticket',
                 component: UserDatatable
@@ -71,17 +43,6 @@ var ThemeRoutes = {
         { path: '/', pathTo: '/home', name: 'Home', redirect: true }
 ],
 nonAdmin: [
-// {
-        // 	navlabel: true,
-        // 	name: "Personal",
-        // 	icon: "mdi mdi-dots-horizontal",
-        // },
-
-        // {
-        // navlabel: true,
-        // name: "Tables",
-        // icon: "mdi mdi-dots-horizontal",
-        // },
         {
                 path: '/tables/candidate',
                 name: 'Candidate',
@@ -94,11 +55,6 @@ nonAdmin: [
                 icon: 'mdi mdi-border-inside',
                 component: PositionDatatable
         },
-        // {
-        // navlabel: true,
-        // name: "Calendar",
-        // icon: "mdi mdi-dots-horizontal",
-        // },
         {
                 path: '/calendar',
                 name: 'Calendar',
@@ -111,18 +67,7 @@ nonAdmin: [
                 icon: 'mdi mdi-blur',
                 component: Chartjs
         },
-        // {
-        //         path: '/dashboard',
-        //         name: 'Dashboard',
-        //         icon: 'ti-dashboard',
-        //         child: [{
-        //                 path: "/dashboards/classic",
-        //                 name: "Classic",
-        //                 mini: "B",
-        //                 icon: "mdi mdi-adjust",
-        //                 component: Dashboard
-        //         }]
-        // },
+        
         { path: '/', pathTo: '/home', name: 'Home', redirect: true }
 ]
 }

@@ -102,7 +102,7 @@ export default () => {
                         {/* Start Mega Menu Dropdown                                                       */}
                         {/*--------------------------------------------------------------------------------*/}
                         <UncontrolledDropdown nav inNavbar className="mega-dropdown">
-                            <DropdownToggle nav> Hot Positions <i className="fa fa-angle-down" /></DropdownToggle>
+                            <DropdownToggle nav> Recruiter Resources <i className="fa fa-angle-down" /></DropdownToggle>
                             <DropdownMenu>
                                 <Row>
                                     {/*--------------------------------------------------------------------------------*/}
@@ -118,13 +118,16 @@ export default () => {
                                     <Col xs="12" sm="12" md="12" lg="3">
                                         <h5 className="mb-3 text-uppercase">Progress</h5>
                                         <div className="d-flex no-block align-items-center mb-2">
-                                            <span>Positions Open to Filled</span>
+                                            <span>Positions Open vs Closed</span>
                                             <div className="ml-auto">
                                                 <span className="text-primary">
-                                                    <i className="mdi mdi-chart-areaspline" />
+                                                    
+                                                    {/* <i className="mdi mdi-chart-areaspline" /> */}
                                                 </span>
                                             </div>
                                         </div>
+
+                                        
                                         {/* <Progress className="mb-3" animated value={2 * 5} />
                                         <div className="d-flex no-block align-items-center mb-2">
                                             <span>Marketing</span>
@@ -194,40 +197,40 @@ export default () => {
                                         <h5 className="mb-3 text-uppercase">Recruiter's Checklist</h5>
                                         <ListGroup flush>
                                             <ListGroupItem
-                                                tag="a"
-                                                href=""
+                                                // tag="a"
+                                                // href=""
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />
 													Background Check 
                                             </ListGroupItem>
                                             <ListGroupItem
-                                                tag="a"
-                                                href=""
+                                                // tag="a"
+                                                // href=""
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />
 													Drug Screen (5-Panel or 8-Panel)
                                             </ListGroupItem>
                                             <ListGroupItem
-                                                tag="a"
-                                                href=""
+                                                // tag="a"
+                                                // href=""
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />
 													Physical (Vaccines, TB Shot)
                                             </ListGroupItem>
                                             <ListGroupItem
-                                                tag="a"
-                                                href=""
+                                                // tag="a"
+                                                // href=""
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />
 													I-9 (US Passport OR Driver's License)
                                             </ListGroupItem>
                                             <ListGroupItem
-                                                tag="a"
-                                                href=""
+                                                // tag="a"
+                                                // href=""
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />

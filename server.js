@@ -114,7 +114,8 @@ app.get("/api/candidates", (req, res) => {
 //Update
 app.put("/api/candidate", (req, res) => {
   CandidateModel.findOneAndUpdate({
-    _id: req.body._id
+    email: req.body.email
+    // _id: req.body._id
   }, req.body, { new: true }, function (err, candidate) {
     if (err)
       res.send(err)
@@ -128,7 +129,8 @@ app.put("/api/candidate", (req, res) => {
 //Delete
 app.delete("/api/candidate", (req, res) =>
 CandidateModel.findOneAndRemove({
-    _id: req.body.id
+    // _id: req.body.id
+    email: req.body.email
   }, (err, candidate) => {
     if (err) {
       res.send("deletion fail")
@@ -161,7 +163,8 @@ app.get("/api/positions", (req, res) => {
 //Update
 app.put("/api/position", (req, res) => {
   PositionModel.findOneAndUpdate({
-    _id: req.body._id
+    // _id: req.body._id
+    req: req.body.req
   }, req.body, { new: true }, function (err, position) {
     if (err)
       res.send(err)
@@ -175,7 +178,8 @@ app.put("/api/position", (req, res) => {
 //Delete
 app.delete("/api/position", (req, res) => 
 PositionModel.findOneAndRemove({
-  _id: req.body.id
+  // _id: req.body.id
+  req: req.body.req
 }, (err, position) => {
   if (err) {
     res.send("deletion fail")
@@ -223,9 +227,9 @@ app.put("/api/user", (req, res) => {
 
 // Send every request to the React app
 // Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port: http://localhost:${PORT}`);

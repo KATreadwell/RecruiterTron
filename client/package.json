@@ -1,5 +1,6 @@
 {
   "name": "recruiter-tron",
+  "proxy": "http://localhost:3333",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {

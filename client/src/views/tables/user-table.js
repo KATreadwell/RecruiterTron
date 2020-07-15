@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import * as jsondataUser from './data-user-table';
+// import * as jsondataUser from './data-user-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import './table.css';
 import axios from 'axios';
 
-//This is for the Delete row  
 function onAfterDeleteRow(rowKeys) {
-    // alert('The rowkey you drop: ' + rowKeys);
+   console.log('delete row', rowKeys);
+   axios({
+       method: 'delete',
+       url: '/api/users',
+       headers: {
+           'content-type': 'application/json',
+       },
+       data: {
+           id: rowKeys
+       }
+   })
+   .then(result => console.log('browser deleted record', result));
 }
 
-//This is for the insert new row
-
 function onAfterInsertRow(row) {
-  let newRowStr = {}; let testArray = []
+  let newRowStr = {}
   for (const prop in row) {
       newRowStr[prop]=row[prop]
   }
@@ -23,7 +31,7 @@ function onAfterInsertRow(row) {
 
   axios({
       method: 'post',
-      url: 'https://localhost:3333/api/user',
+      url: '/api/user',
       headers: {
           'content-type': 'application/json',
       },
@@ -42,7 +50,7 @@ function afterSearch(searchText, result) {
     console.log('Your search text is ' + searchText);
     console.log('Result is:');
     for (let i = 0; i < result.length; i++) {
-        console.log('Fruit: ' + result[i].id + ', ' + result[i].name + ', ' + result[i].price);
+        console.log('Results: ' + result[i].id + ', ' + result[i].name);
     }
 }
 const options = {
@@ -67,7 +75,7 @@ const Datatables = () => {
         
         axios({
             method: "GET",
-            url: "http://localhost:3333/api/user",
+            url: "/api/user",
             headers:{
                 //get around CORS issue
                 "Content-Type": "application/json",
@@ -99,7 +107,8 @@ const Datatables = () => {
                             <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn>
+                            {/* <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>

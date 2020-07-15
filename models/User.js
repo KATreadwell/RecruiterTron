@@ -59,10 +59,10 @@ const Schema = mongoose.Schema;
  
  const UserSchema = new Schema({
     username: String,
-    admin: Boolean,
+   //  admin: Boolean,
     firstName: String,
     lastName: String,
-    // userPhoto: ?
+    password: String,
  })
 
 const User = mongoose.model("User", UserSchema);
