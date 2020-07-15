@@ -219,21 +219,21 @@ app.put("/api/user", (req, res) => {
       res.send(err)
     user.save(function () {
       if (!err)
-        res.json({ data: position, message: "User updated successfully." })
+        res.json({ data: user, message: "User updated successfully." })
     })
   })
 })
 
 //Delete
 app.delete("/api/user", (req, res) => 
-PositionModel.findOneAndRemove({
+UserModel.findOneAndRemove({
   // _id: req.body.id
   username: req.body.username
-}, (err, position) => {
+}, (err, user) => {
   if (err) {
     res.send("deletion fail")
   } else {
-    console.log(position);
+    console.log(user);
     res.status(204).json({message: "User deleted successfuly."})
   }
 }))
