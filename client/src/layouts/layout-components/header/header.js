@@ -118,18 +118,30 @@ export default () => {
                                     {/* Progress [Item-2]                                                              */}
                                     {/*--------------------------------------------------------------------------------*/}
                                     <Col xs="12" sm="12" md="12" lg="3">
-                                        <h5 className="mb-3 text-uppercase">Progress</h5>
-                                        <div className="d-flex no-block align-items-center mb-2">
-                                            <span>Positions Open vs Closed</span>
-                                            <div className="ml-auto">
-                                                <span className="text-primary">
-                                                    {/* {piePositionData}
-                                                    <i className="mdi mdi-chart-areaspline" /> */}
-                                                </span>
-                                            </div>
-                                        </div>
+                                        <h5 className="mb-3 text-uppercase">Important Contacts</h5>
+                                        {/* <div className="d-flex no-block align-items-center mb-2"> */}
+                                        <ListGroup flush>
+                                            <ListGroupItem
+                                                className="border-0 pl-0 text-dark pt-0">
+                                                <i className="fas fa-hand-point-right" />
+                                                <span> Phone: (877) 535-8767</span>
+                                            </ListGroupItem>
+                                            <ListGroupItem
+                                                className="border-0 pl-0 text-dark pt-0">
+                                                <i className="fas fa-hand-point-right" />
+                                                <span> Email: RecruitmentCA@icsecurity.com</span>
+                                            </ListGroupItem>
+                                        </ListGroup>
 
-                                        
+                                        <div className="ml-auto">
+                                            <span className="text-primary">
+                                                {/* {piePositionData}
+                                                    <i className="mdi mdi-chart-areaspline" /> */}
+                                            </span>
+                                        </div>
+                                        {/* </div> */}
+
+
                                         {/* <Progress className="mb-3" animated value={2 * 5} />
                                         <div className="d-flex no-block align-items-center mb-2">
                                             <span>Marketing</span>
@@ -204,7 +216,7 @@ export default () => {
                                                 className="border-0 pl-0 text-dark pt-0"
                                             >
                                                 <i className="fa fa-check text-success mr-2" />
-													Background Check 
+													Background Check
                                             </ListGroupItem>
                                             <ListGroupItem
                                                 // tag="a"
@@ -276,15 +288,15 @@ export default () => {
                                 <span className="with-arrow">
                                     <span className="bg-primary" />
                                 </span> */}
-                                {/* <div className="d-flex drop-title no-block align-items-center p-3 bg-primary text-white mb-2">
+                        {/* <div className="d-flex drop-title no-block align-items-center p-3 bg-primary text-white mb-2">
                                     <div className="">
                                         <h4 className="mb-0">4 New</h4>
                                         <p className="mb-0">Notifications</p>
                                     </div>
                                 </div> */}
-                                {/* <div className="message-center notifications"> */}
-                                    {/*<!-- Message -->*/}
-                                    {/* {data.notifications.map((notification, index) => {
+                        {/* <div className="message-center notifications"> */}
+                        {/*<!-- Message -->*/}
+                        {/* {data.notifications.map((notification, index) => {
                                         return (
                                             <span href="" className="message-item" key={index}>
                                                 <span className={"btn btn-circle btn-" + notification.iconbg}>
@@ -301,11 +313,11 @@ export default () => {
                                         );
                                     })}
                                 </div> */}
-                                {/* <a className="nav-link text-center mb-1 text-dark" href=";">
+                        {/* <a className="nav-link text-center mb-1 text-dark" href=";">
                                     <strong>Check all notifications</strong>{' '}
                                     <i className="fa fa-angle-right" />
                                 </a> */}
-                            {/* </DropdownMenu>
+                        {/* </DropdownMenu>
                         </UncontrolledDropdown> */}
                         {/*--------------------------------------------------------------------------------*/}
                         {/* End Notifications Dropdown                                                     */}
@@ -317,7 +329,7 @@ export default () => {
                             <DropdownToggle nav caret>
                                 <i className="font-24 mdi mdi-comment-processing" />
                             </DropdownToggle> */}
-                            {/* <DropdownMenu right className="mailbox">
+                        {/* <DropdownMenu right className="mailbox">
                                 <span className="with-arrow">
                                     <span className="bg-danger" />
                                 </span>
@@ -328,8 +340,8 @@ export default () => {
                                     </div>
                                 </div>
                                 <div className="message-center message-body"> */}
-                                    {/*<!-- Message -->*/}
-                                    {/* {data.messages.map((message, index) => {
+                        {/*<!-- Message -->*/}
+                        {/* {data.messages.map((message, index) => {
                                         return (
                                             <span href="" className="message-item" key={index}>
                                                 <span className="user-img">
@@ -350,7 +362,7 @@ export default () => {
                                         );
                                     })}
                                 </div> */}
-                                {/* <span className="nav-link text-center link text-dark" href="">
+                        {/* <span className="nav-link text-center link text-dark" href="">
                                     <b>See all e-Mails</b> <i className="fa fa-angle-right" />
                                 </span>
                             </DropdownMenu>

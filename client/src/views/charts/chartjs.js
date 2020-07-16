@@ -12,20 +12,17 @@ import * as d from './chartjs-data';
 //Open vs Closed Positions
 var piePositionData = {
     labels: [
-        'Open Positions',
-        // 'Yellow',
-        'Closed Positions'
+        'Open',
+        'Closed'
     ],
     datasets: [{
         data: d.chartData.pieData.data,
         backgroundColor: [
             '#4fc3f7',
-            // '#ffc107',
             '#2962ff'
         ],
         hoverBackgroundColor: [
             '#30ade6',
-            // '#ffc107',
             '#092e94'
         ]
     }]
@@ -33,20 +30,17 @@ var piePositionData = {
 
 var pieCandidateData = {
     labels: [
-        'Open Positions',
-        // 'Yellow',
-        'Closed Positions'
+        'Interview',
+        'Offer'
     ],
     datasets: [{
         data: d.chartData.pieData.data,
         backgroundColor: [
             '#4fc3f7',
-            // '#ffc107',
             '#2962ff'
         ],
         hoverBackgroundColor: [
             '#30ade6',
-            // '#ffc107',
             '#092e94'
         ]
     }]
