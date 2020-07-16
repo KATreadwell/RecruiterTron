@@ -11,9 +11,9 @@ const Home = () => {
         <Card>
             <CardBody>
             {/* <CardTitle>Welcome to the Inter-Con Security Recruiter-Tron!</CardTitle> */}
-                       <h1>Welcome to the Inter-Con Security Recruiter-Tron!</h1>
+                       <h1 id="home">Welcome to the Inter-Con Security Recruiter-Tron!</h1>
                        <br></br>
-                       <h2>Let's get to recruiting!</h2>
+                       <h2 id="home2">Let's get to recruiting!</h2>
                        
 				</CardBody>
         </Card>

@@ -133,12 +133,12 @@ export default () => {
                                             </ListGroupItem>
                                         </ListGroup>
 
-                                        <div className="ml-auto">
-                                            <span className="text-primary">
+                                        {/* <div className="ml-auto">
+                                            <span className="text-primary"> */}
                                                 {/* {piePositionData}
                                                     <i className="mdi mdi-chart-areaspline" /> */}
-                                            </span>
-                                        </div>
+                                            {/* </span>
+                                        </div> */}
                                         {/* </div> */}
 
 
