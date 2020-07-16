@@ -1,11 +1,12 @@
 {
   "name": "recruiter-tron",
-  "proxy": "http://localhost:git add /",
+  "proxy": "http://localhost:3001",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "lodash": "^4.17.15",
-    "mixin-deep": "^2.0.1"
+    "mixin-deep": "^2.0.1",
+    "node": "^8.15.0"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
