@@ -18,8 +18,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 //     );
 // }
 
-
-
 const Google = compose(
     withProps({
       googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
@@ -32,9 +30,9 @@ const Google = compose(
   )((props) =>
     <GoogleMap
       defaultZoom={8}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+      defaultCenter={{ lat: 34.052, lng: -118.243 }}
     >
-      {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+      {props.isMarkerShown && <Marker position={{ lat: 34.052, lng: -118.243 }} onClick={props.onMarkerClick} />}
     </GoogleMap>
   )
   
