@@ -18,7 +18,7 @@ import DoS3 from '../../assets/images/DoS3.jpg';
 // import img2 from '../../assets/images/background/login-register.jpg';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { authenticationService } from '../../jwt/_services';
+import { login } from '../../helpers/authentication';
 
 
 const sidebarBackground = {
@@ -61,15 +61,15 @@ const Login = (props) => {
                                 })}
                                 onSubmit={({ username, password }, { setStatus, setSubmitting }) => {
                                     setStatus();
-                                    authenticationService.login(username, password)
+                                    login(username, password)
                                         .then(
-                                            user => {
+                                            res => {
                                                 const { from } = props.location.state || { from: { pathname: "/" } };
                                                 props.history.push(from);
                                             },
                                             error => {
                                                 setSubmitting(false);
-                                                setStatus(error);
+                                                setStatus("Incorrect username or password");
                                             }
                                         );
                                 }}
@@ -95,12 +95,12 @@ const Login = (props) => {
                                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
 
                                         </InputGroup>
-                                        <div className="d-flex no-block align-items-center mb-3">
+                                        {/* <div className="d-flex no-block align-items-center mb-3">
                                             <CustomInput type="checkbox" id="exampleCustomCheckbox" label="Remember Me" />
                                             <div className="ml-auto">
                                                 <a href="#recoverform" id="to-recover" onClick={handleClick.bind(null)} className="forgot text-dark float-right"><i className="fa fa-lock mr-1"></i> Forgot password?</a>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <Row className="mb-3">
                                             <Col xs="12">
                                                 <button type="submit" className="btn btn-block btn-submit btn-primary" disabled={isSubmitting}>Login</button>
@@ -126,27 +126,6 @@ const Login = (props) => {
                                     </Form>
                                 )}
                             />
-                        </Col>
-                    </Row>
-                </div>
-                <div id="recoverform">
-                    <div className="logo">
-                        <span className="db"><img src={ICEmailLogo} alt="ICEmailLogo" /></span>
-                        <h5 className="font-medium mb-3">Recover Password</h5>
-                        <span>Enter your Email and instructions will be sent to you!</span>
-                    </div>
-                    <Row className="mt-3">
-                        <Col xs="12">
-                            <Form action="/dashbaord">
-                                <FormGroup>
-                                    <Input type="text" name="uname" bsSize="lg" id="Name" placeholder="Username" required />
-                                </FormGroup>
-                                <Row className="mt-3">
-                                    <Col xs="12">
-                                        <Button color="danger" size="lg" type="submit" block>Reset</Button>
-                                    </Col>
-                                </Row>
-                            </Form>
                         </Col>
                     </Row>
                 </div>

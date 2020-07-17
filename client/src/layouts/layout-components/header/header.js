@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Nav, NavItem, NavLink, Button, Navbar, NavbarBrand, Collapse, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledCarousel, Progress, ListGroup, ListGroupItem, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import * as data from './data';
@@ -110,7 +110,7 @@ export default () => {
                                     {/*--------------------------------------------------------------------------------*/}
                                     {/* Carousel [Item-1]                                                              */}
                                     {/*--------------------------------------------------------------------------------*/}
-                                    <Col xs="12" sm="12" md="12" lg="3">
+                                    <Col xs="12" sm="12" md="12" lg="2">
                                         <h5 className="mb-3 text-uppercase">Top Clients</h5>
                                         <UncontrolledCarousel items={data.items} />
                                     </Col>
@@ -396,10 +396,10 @@ export default () => {
                                             width="60"
                                         /> */}
                                     </div>
-                                    <div className="ml-2">
+                                    {/* <div className="ml-2">
                                         <h4 className="mb-0">KAT</h4>
-                                        {/* <p className=" mb-0">varun@gmail.com</p> */}
-                                    </div>
+                                        <p className=" mb-0">varun@gmail.com</p>
+                                    </div> */}
                                 </div>
                                 {/* <DropdownItem>
                                     <i className="ti-user mr-1 ml-1" /> My Account
@@ -415,8 +415,8 @@ export default () => {
                                     <i className="ti-settings mr-1 ml-1" /> Account Settings
                                 </DropdownItem>
                                 <DropdownItem divider /> */}
-                                <DropdownItem href="/pages/login">
-                                    <i className="fa fa-power-off mr-1 ml-1" /> Logout
+                                <DropdownItem href="/logout">
+                                <i className="fa fa-power-off mr-1 ml-1" /> Logout
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 {/* <Button color="success" className="btn-rounded ml-3 mb-2 mt-2"       >

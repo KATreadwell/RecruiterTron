@@ -127,8 +127,8 @@ const Datatables = () => {
                         <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
                         <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
                         <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
-                        <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn>
-                        {/* <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn> */}
+                        {/* <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn> */}
+                        <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

@@ -7,17 +7,6 @@ import {
 import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-// const Google = () => {
-//     return (
-//         <Card>
-//             <CardBody>
-            
-
-//             </CardBody>
-//         </Card>
-//     );
-// }
-
 const Google = compose(
     withProps({
       googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
