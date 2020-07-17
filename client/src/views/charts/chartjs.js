@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Doughnut, Line, Bar, Radar, Pie, Polar } from 'react-chartjs-2';
 import {
     Card,
@@ -135,6 +135,15 @@ var radarData = {
 
 
 const Chartjs = () => {
+    const [ data, setData ] = useState(null);
+    useEffect(()=>{
+        
+    },[]);
+
+    if(!data) {
+        return null;
+    }
+
     return <div>
         {/*--------------------------------------------------------------------------------*/}
         {/* Start Inner Div*/}
