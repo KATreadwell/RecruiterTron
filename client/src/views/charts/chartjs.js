@@ -135,20 +135,22 @@ var radarData = {
 
 
 const Chartjs = () => {
-    const [ data, setData ] = useState(null);
-    useEffect(()=>{
+    // const [ data, setData ] = useState(null);
+    // useEffect(()=>{
         
-    },[]);
+    // },[]);
 
-    if(!data) {
-        return null;
-    }
+    // if(!data) {
+    //     return null;
+    // }
 
     return <div>
         {/*--------------------------------------------------------------------------------*/}
         {/* Start Inner Div*/}
         {/*--------------------------------------------------------------------------------*/}
         <Row>
+      
+     
             <Col md="6">
                 <Card>
                     <CardBody>
