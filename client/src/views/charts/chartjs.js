@@ -31,7 +31,7 @@ var piePositionData = {
 var pieCandidateData = {
     labels: [
         'Interview',
-        'Offer'
+        'Hired'
     ],
     datasets: [{
         data: d.chartData.pieData.data,
@@ -149,8 +149,6 @@ const Chartjs = () => {
         {/* Start Inner Div*/}
         {/*--------------------------------------------------------------------------------*/}
         <Row>
-      
-     
             <Col md="6">
                 <Card>
                     <CardBody>
