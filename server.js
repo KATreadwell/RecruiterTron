@@ -20,7 +20,8 @@ const store = new mongo_session({
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 // Serve up static assets (usually on heroku)
@@ -56,8 +57,8 @@ passport.use(new LocalStrategy((username, password, done) => {
     if (!user) {
       return done(null, false, { message: 'Incorrect username or password.' });
     }
-    user.validatePassword(password).then(({ match }) => {
-      if (match) { 
+    user.validatePassword(password).then((match) => {
+      if (match) {
         return done(null, user);
       }
       return done(null, false, { message: 'Incorrect username or password.' });
@@ -101,7 +102,9 @@ app.get('/logout', (req, res) => {
 })
 // End Passport
 
-app.get("/api/me", (req, res) => {
+api = express.Router();
+
+api.get("/me", (req, res) => {
   if (req.user) {
     const { firstName, lastName, username, admin } = req.user
     res.json({ firstName, lastName, username, admin });
@@ -112,150 +115,125 @@ app.get("/api/me", (req, res) => {
 
 //CANDIDATE ROUTES
 //push candidate test data to dB
-app.post("/api/candidate", isLoggedIn, (req, res) => {
-  console.log("request object", req.body)
-  const records = new CandidateModel(req.body);
-  records.save((err, doc) => {
-    if (err)
-      res.send(err)
-    res.json({ data: doc, message: "Testy test, new candidate worked!" })
-  })
+api.post("/candidate", isLoggedIn, async (req, res) => {
+  const model = new CandidateModel(req.body);
+  try {
+    res.json(await model.save());
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //route to get candidates 
-app.get("/api/candidates", isLoggedIn, (req, res) => {
-  CandidateModel.find({}, (err, doc) => {
-    res.json({ data: doc, message: "Fetched all candidates." })
-  })
+api.get("/candidates", isLoggedIn, async (req, res) => {
+  res.json(await CandidateModel.find({}));
 })
 
 //Update
-app.put("/api/candidate", isLoggedIn, (req, res) => {
-  CandidateModel.findOneAndUpdate({
-    email: req.body.email
-    // _id: req.body._id
-  }, req.body, { new: true }, function (err, candidate) {
-    if (err)
-      res.send(err)
-    candidate.save(function () {
-      if (!err)
-        res.json({ data: candidate, message: "Candidate updated successfully." })
-    })
-  })
+api.put("/candidate", isLoggedIn, async (req, res) => {
+  const { email } = req.body;
+  try {
+    res.json(await CandidateModel.findOneAndUpdate({ email }, req.body));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //Delete
-app.delete("/api/candidate", isLoggedIn, (req, res) =>
-  CandidateModel.findOneAndRemove({
-    // _id: req.body.id
-    email: req.body.email
-  }, (err, candidate) => {
-    if (err) {
-      res.send("deletion fail")
-    } else {
-      console.log(candidate);
-      res.status(204).json({ message: "Candidate deleted successfully." })
-    }
-  }))
+api.delete("/candidate", isLoggedIn, async (req, res) => {
+  const { email } = req.body;
+  try {
+    res.json(await CandidateModel.deleteMany({ email }));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
+})
 
 
 //POSITION ROUTES
 //push position test data to dB
-app.post("/api/position", isLoggedIn, (req, res) => {
-  console.log("request object", req.body);
-  const records = new PositionModel(req.body);
-  records.save((err, doc) => {
-    if (err)
-      res.send(err)
-    res.json({ data: doc, message: "Testy test, new position worked!" })
-  })
+api.post("/position", isLoggedIn, async (req, res) => {
+  const model = new PositionModel(req.body);
+  try {
+    res.json(await model.save());
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //route to get position  
-app.get("/api/positions", isLoggedIn, (req, res) => {
-  PositionModel.find({}, (err, doc) => {
-    res.json({ data: doc, message: "Fetched all positions." })
-  })
+api.get("/positions", isLoggedIn, async (req, res) => {
+  res.json(await PositionModel.find({}));
 })
 
 //Update
-app.put("/api/position", isLoggedIn, (req, res) => {
-  PositionModel.findOneAndUpdate({
-    // _id: req.body._id
-    req: req.body.req
-  }, req.body, { new: true }, function (err, position) {
-    if (err)
-      res.send(err)
-    position.save(function () {
-      if (!err)
-        res.json({ data: position, message: "Position updated successfully." })
-    })
-  })
+api.put("/position", isLoggedIn, async (req, res) => {
+  try {
+    res.json(await PositionModel.findOneAndUpdate({ req: req.body.req }, req.body));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //Delete
-app.delete("/api/position", isLoggedIn, (req, res) =>
-  PositionModel.findOneAndRemove({
-    // _id: req.body.id
-    req: req.body.req
-  }, (err, position) => {
-    if (err) {
-      res.send("deletion fail")
-    } else {
-      console.log(position);
-      res.status(204).json({ message: "Position deleted successfuly." })
-    }
-  }))
+api.delete("/position", isLoggedIn, async (req, res) => {
+  try {
+    res.json(await PositionModel.deleteMany({ req: req.body.req }));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
+})
 
 
 //USER ROUTES
 //push user test data to dB
-app.post("/api/user", isAdmin, (req, res) => {
-  console.log("request object", req.body);
-  const records = new UserModel(req.body);
-  records.save((err, doc) => {
-    if (err)
-      res.send(err)
-    res.json({ data: doc, message: "Testy test, new user worked!" })
-  })
+api.post("/user", isAdmin, async (req, res) => {
+  const model = new UserModel(req.body);
+  try {
+    res.json(await model.save());
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //route to get users
-app.get("/api/users", isAdmin, (req, res) => {
-  UserModel.find({}, (err, doc) => {
-    res.json({ data: doc, message: "Fetched all users." })
-  })
+api.get("/users", isAdmin, async (req, res) => {
+  const users = (await UserModel.find({})).map((user) => {
+    return Object.assign(user.toObject(), { password: '*****' });
+  });
+  res.json(users);
 })
 
 //update
-app.put("/api/user", isAdmin, (req, res) => {
-  UserModel.findOneAndUpdate({
-    // _id: req.body._id
-    username: req.body.username
-  }, req.body, { new: true }, function (err, user) {
-    if (err)
-      res.send(err)
-    user.save(function () {
-      if (!err)
-        res.json({ data: user, message: "User updated successfully." })
-    })
-  })
+api.put("/user", isAdmin, async (req, res) => {
+  const { username } = req.body;
+  try {
+    res.json(await UserModel.findOneAndUpdate({ username }, req.body));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
 })
 
 //Delete
-app.delete("/api/user", isAdmin, (req, res) =>
-  UserModel.findOneAndRemove({
-    // _id: req.body.id
-    username: req.body.username
-  }, (err, user) => {
-    if (err) {
-      res.send("deletion fail")
-    } else {
-      console.log(user);
-      res.status(204).json({ message: "User deleted successfuly." })
-    }
-  }))
+api.delete("/users", isAdmin, async (req, res) => {
+  const { username } = req.body;
+  try {
+    res.json(await UserModel.deleteMany({ username }));
+  } catch (e) {
+    console.error(e);
+    res.status(500).end();
+  }
+})
 
+app.use('/api', api);
 
 // Send every request to the React app
 // Define any API routes before this runs

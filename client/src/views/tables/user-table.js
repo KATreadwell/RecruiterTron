@@ -66,7 +66,10 @@ const selectRowProp = {
 const onAfterSaveCell = (row, cellName, cellValue) => {
     let rowStr = {};
     for (const prop in row) {
-        rowStr[prop]=row[prop]
+        if (prop === 'password' && row[prop] === '*****') {
+            continue;
+        }
+        rowStr[prop] = row[prop]
     }
     console.log('updated row', rowStr);
     const userData=JSON.stringify(rowStr)
@@ -104,7 +107,7 @@ const Datatables = () => {
         })
         .then(result => {
             console.log("result", result);
-            setUsersData(result.data)
+            setUsersData(result);
         })
     }, [])
 

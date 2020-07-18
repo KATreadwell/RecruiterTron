@@ -102,7 +102,7 @@ const Datatables = () => {
         })
         .then(result => {
             console.log('result', result);
-            setCandidatesData(result.data)
+            setCandidatesData(result);
         })
     }, [])
 

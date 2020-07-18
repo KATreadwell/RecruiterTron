@@ -5,12 +5,23 @@ import Header from './layout-components/header/header';
 import Sidebar from './layout-components/sidebar/sidebar';
 import Footer from './layout-components/footer/footer';
 import Customizer from './layout-components/customizer/customizer';
-import ThemeRoutes from '../routes/router';
-import sidebar from './layout-components/sidebar/sidebar';
+
+import { Routes, AdminRoutes, Redirects } from '../routes/router';
+import { getUser } from '../helpers/authentication';
 
 export default (props) => {
 
     const [width, setWidth] = useState(window.innerWidth);
+
+    const [sidebarRoutes, setSidebarRoutes] = useState(Routes);
+
+    useEffect(() => {
+        getUser().then(user => {
+            if (user.admin) {
+                setSidebarRoutes(AdminRoutes);
+            }
+        });
+    }, [])
 
     const settings = useSelector((state) => state.settings);
 
@@ -52,8 +63,6 @@ export default (props) => {
         };
     }, [settings.activeSidebarType, width]);
 
-    let sidebarRoutes = ThemeRoutes.Admin
-    // let sidebarRoutes = user.isAdmin ? ThemeRoutes.Admin : ThemeRoutes.nonAdmin; 
     return (
         <div
             id="main-wrapper"
@@ -79,32 +88,15 @@ export default (props) => {
             <div className="page-wrapper d-block">
                 <div className="page-content container-fluid">
                     <Switch>
-                        {sidebarRoutes.map((prop, key) => {
-                            if (prop.navlabel) {
-                                return null;
-                            }
-                            else if (prop.collapse) {
-                                return prop.child.map((prop2, key2) => {
-                                    if (prop2.collapse) {
-                                        return prop2.subchild.map((prop3, key3) => {
-                                            return (
-                                                <Route path={prop3.path} component={prop3.component} key={key3} />
-                                            );
-                                        });
-                                    }
-                                    return (
-                                        <Route path={prop2.path} component={prop2.component} key={key2} />
-                                    );
-                                });
-                            }
-                            else if (prop.redirect) {
-                                return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-                            }
-                            else {
-                                return (
-                                    <Route path={prop.path} component={prop.component} key={key} />
-                                );
-                            }
+                        {sidebarRoutes.map(({component, path}) => {
+                            return (
+                                <Route path={path} component={component} key={path} />
+                            );
+                        })}
+                        {Redirects.map(({from, to}) => {
+                            return (
+                                <Redirect from={from} to={to} key={`${from}${to}`} />
+                            );
                         })}
                     </Switch>
                 </div>
