@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-let userInfo;
+let userInfo = null;
 
-export const getUser = () => {
-    if (userInfo === undefined) {
-        axios.get('/api/me').then(res => {
-            userInfo = res.data;
-        }).catch(console.error);
-    } 
+export const getUser = async () => {
+    if (userInfo === null) {
+        try {
+            userInfo = (await axios.get('/api/me')).data;
+        } catch {
+            return false;
+        }
+    }
     return userInfo;
 }
 

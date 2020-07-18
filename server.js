@@ -1,33 +1,40 @@
-require("dotenv").config();
+if (process.env.NODE_ENV !== 'production') {
+  require("dotenv").config();
+}
 
-const express = require("express");
-const path = require("path");
-const mongoose = require("mongoose");
-//const axios = require("axios");
-const passport = require("passport");
-
-
-const app = express();
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/recruiter-tron";
 const PORT = process.env.PORT || 3001;
 
-app.use(require("cors")());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(require("express-session")({ secret: 'keyboard cat', resave: false, saveUninitialized: false }))
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(require("morgan")("dev"));
+const express = require("express");
+const session = require("express-session");
+const mongo_session = require('connect-mongodb-session')(session);
+const mongoose = require("mongoose");
+const passport = require("passport");
+const path = require("path");
+
+const app = express();
+const store = new mongo_session({
+  uri: MONGODB_URI,
+  collection: 'Sessions'
+});
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost/recruiter-tron";
-mongoose.connect(mongoUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+app.use(require("cors")());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(session({ store, secret: 'keyboard cat', resave: false, saveUninitialized: false }))
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(require("morgan")("dev"));
 
 //Handle db connection
 // const db = mongoose.connection;
@@ -81,7 +88,7 @@ const isAdmin = (req, res, next) => {
   if (req.user && req.user.admin) {
     next();
   } else {
-    res.status(401).end();
+    res.send(401);
   }
 }
 
@@ -89,7 +96,10 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
   res.redirect('/');
 });
 app.get('/logout', (req, res) => {
+  console.log('logout!');
   req.logout();
+  req.session.user = null;
+  req.session = null;
   res.redirect('/');
 })
 // End Passport
@@ -99,7 +109,7 @@ app.get("/api/me", (req, res) => {
     const { firstName, lastName, username, admin } = req.user
     res.json({ firstName, lastName, username, admin });
   } else {
-    res.status(401).end();
+    res.send(401);
   }
 });
 
@@ -248,8 +258,6 @@ app.delete("/api/user", isAdmin, (req, res) =>
       res.status(204).json({ message: "User deleted successfuly." })
     }
   }))
-
-  //Logout
 
 
 // Send every request to the React app

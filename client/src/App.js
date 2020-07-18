@@ -7,15 +7,38 @@ import Blanklayout from './layouts/blanklayout';
 
 import { getUser } from './helpers/authentication';
 
-const AuthRoute = ({ component: Component, ...props }) => (
-    <Route {...props} render={props => {
-        const currentUser = getUser();
-        if (!currentUser) {
-            return <Redirect to={{ pathname: '/authentication/login', state: { from: props.location } }} />
+class AuthRoute extends React.Component {
+    state = {
+        currentUser: null
+    }
+
+    async componentDidMount() {
+        const currentUser = await getUser();
+        this.setState({ currentUser });
+    }
+
+    render() {
+        const { component: Component, ...props } = this.props;
+
+        if (this.state.currentUser === null) {
+            return (
+                <></>
+            )
+        } else if (!this.state.currentUser) {
+            return (
+                <Route {...props}>
+                    <Redirect to={{ pathname: '/authentication/login', state: { from: props.location } }} />
+                </Route>
+            )
+        } else {
+            return (
+                <Route {...props}>
+                    <Component {...props} />
+                </Route>
+            )
         }
-        return <Component {...props} />
-    }} />
-)
+    }
+}
 
 class App extends React.Component {
     constructor(props) {
