@@ -15,7 +15,7 @@ const path = require("path");
 const app = express();
 const store = new mongo_session({
   uri: MONGODB_URI,
-  collection: 'Sessions'
+  collection: 'sessions'
 });
 
 mongoose.connect(MONGODB_URI, {
@@ -88,19 +88,16 @@ const isAdmin = (req, res, next) => {
   if (req.user && req.user.admin) {
     next();
   } else {
-    res.send(401);
+    res.status(401).end();
   }
 }
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
-  res.redirect('/');
+  res.end();
 });
 app.get('/logout', (req, res) => {
-  console.log('logout!');
   req.logout();
-  req.session.user = null;
-  req.session = null;
-  res.redirect('/');
+  res.end();
 })
 // End Passport
 
@@ -109,7 +106,7 @@ app.get("/api/me", (req, res) => {
     const { firstName, lastName, username, admin } = req.user
     res.json({ firstName, lastName, username, admin });
   } else {
-    res.send(401);
+    res.status(401).end();
   }
 });
 

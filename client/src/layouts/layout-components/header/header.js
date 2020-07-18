@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Nav, NavItem, NavLink, Button, Navbar, NavbarBrand, Collapse, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledCarousel, Progress, ListGroup, ListGroupItem, Row, Col, Form, FormGroup, Input } from 'reactstrap';
 import * as data from './data';
 import chartjs from 'chart.js';
+import { logout}  from '../../../helpers/authentication';
 // import {piePositionData} from '../../../views/charts/chartjs';
 
 /*--------------------------------------------------------------------------------*/
@@ -415,7 +416,7 @@ export default () => {
                                     <i className="ti-settings mr-1 ml-1" /> Account Settings
                                 </DropdownItem>
                                 <DropdownItem divider /> */}
-                                <DropdownItem href="/logout">
+                                <DropdownItem onClick={() => { logout(); window.location.reload(); } }>
                                 <i className="fa fa-power-off mr-1 ml-1" /> Logout
                                 </DropdownItem>
                                 <DropdownItem divider />
