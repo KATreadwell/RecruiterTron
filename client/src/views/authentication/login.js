@@ -11,11 +11,10 @@ import {
     UncontrolledTooltip,
     Button
 } from 'reactstrap';
-// import img1 from '../../assets/images/logo-icon.png';
+
+//ICS images
 import ICEmailLogo from '../../assets/images/ICEmailLogo.png';
 import DoS3 from '../../assets/images/DoS3.jpg';
-
-// import img2 from '../../assets/images/background/login-register.jpg';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { login } from '../../helpers/authentication';
@@ -46,7 +45,6 @@ const Login = (props) => {
                     <div className="logo">
                         <span className="db"><img src={ICEmailLogo} alt="ICEmailLogo" /></span>
                         <h5 className="font-medium mb-3" id="signin">Sign in to the RecruiterTron!</h5>
-                        {/* <div className="alert alert-success">Username: test  Password: test</div> */}
                     </div>
                     <Row>
                         <Col xs="12">
@@ -95,31 +93,11 @@ const Login = (props) => {
                                             <ErrorMessage name="password" component="div" className="invalid-feedback" />
 
                                         </InputGroup>
-                                        {/* <div className="d-flex no-block align-items-center mb-3">
-                                            <CustomInput type="checkbox" id="exampleCustomCheckbox" label="Remember Me" />
-                                            <div className="ml-auto">
-                                                <a href="#recoverform" id="to-recover" onClick={handleClick.bind(null)} className="forgot text-dark float-right"><i className="fa fa-lock mr-1"></i> Forgot password?</a>
-                                            </div>
-                                        </div> */}
                                         <Row className="mb-3">
                                             <Col xs="12">
                                                 <button type="submit" className="btn btn-block btn-submit btn-primary" disabled={isSubmitting}>Login</button>
                                             </Col>
                                         </Row>
-                                        {/* <div className="text-center mb-2">
-                                            <div className="social">
-                                                <Button id="UncontrolledTooltipExample1" className="btn-facebook mr-2" color="primary">
-                                                    <i aria-hidden="true" className="fab fa-facebook-f"></i>
-                                                </Button>
-                                                <UncontrolledTooltip placement="top" target="UncontrolledTooltipExample1">
-                                                    Facebook</UncontrolledTooltip>
-                                                <Button id="UncontrolledTooltipExample2" className="btn-googleplus" color="danger">
-                                                    <i aria-hidden="true" className="fab fa-google-plus-g"></i>
-                                                </Button>
-                                                <UncontrolledTooltip placement="top" target="UncontrolledTooltipExample2">
-                                                    Google Plus</UncontrolledTooltip>
-                                            </div>
-                                        </div> */}
                                         {status &&
                                             <div className={'alert alert-danger'}>{status}</div>
                                         }

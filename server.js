@@ -37,14 +37,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(require("morgan")("dev"));
 
-//Handle db connection
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "error"))
-
-// db.once("connected", function () {
-//   console.log("Connected");
-// })
-
 //import models
 const CandidateModel = require("./models/Candidate");
 const PositionModel = require("./models/Position");
@@ -151,7 +143,6 @@ api.delete("/candidate", isLoggedIn, async (req, res) => {
     res.status(500).end();
   }
 })
-
 
 //POSITION ROUTES
 //push position test data to dB
