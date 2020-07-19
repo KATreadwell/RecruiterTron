@@ -8,26 +8,10 @@ import {
     Col
 } from 'reactstrap';
 import * as d from './chartjs-data';
+import axios from 'axios';
 
-//Open vs Closed Positions
-var piePositionData = {
-    labels: [
-        'Open',
-        'Closed'
-    ],
-    datasets: [{
-        data: d.chartData.pieData.data,
-        backgroundColor: [
-            '#4fc3f7',
-            '#2962ff'
-        ],
-        hoverBackgroundColor: [
-            '#30ade6',
-            '#092e94'
-        ]
-    }]
-}
 
+//Interview vs Hired Candidates
 var pieCandidateData = {
     labels: [
         'Interview',
@@ -46,35 +30,6 @@ var pieCandidateData = {
     }]
 }
 
-
-//Doughnut Chart
-// const doughnutData = {
-//     labels: [
-//         'Red',
-//         'Blue',
-//         'Yellow',
-//         'Green',
-//         'Orange'
-//     ],
-
-//     datasets: [{
-//         data: d.chartData.doughnutData.data,
-//         backgroundColor: [
-//             '#dc3545',
-//             '#2962ff',
-//             '#fb6340',
-//             '#2dce89',
-//             '#4fc3f7'
-//         ],
-//         hoverBackgroundColor: [
-//             '#dc3545',
-//             '#2962ff',
-//             '#fb6340',
-//             '#2dce89',
-//             '#4fc3f7'
-//         ]
-//     }]
-// };
 
 
 //Bar Chart
@@ -105,44 +60,66 @@ var radarData = {
         borderColor: '#2962ff',
         data: d.chartData.radarData.data.a
     }]
-    // }, {
-    //     label: 'Google',
-    //     backgroundColor: 'rgba(45, 206, 137,0.2)',
-    //     borderColor: 'rgba(45, 206, 137,1)',
-    //     data: d.chartData.radarData.data.b
-    // }]
 };
-
-//Polar Chart
-// var polarData = {
-//     datasets: [{
-//         data: d.chartData.polarData.data,
-//         backgroundColor: [
-//             '#dc3545',
-//             '#2962ff',
-//             '#fb6340',
-//             '#2dce89'
-//         ],
-//         label: 'My dataset'
-//     }],
-//     labels: [
-//         'Label 1',
-//         'Label 2',
-//         'Label 3',
-//         'Label 4'
-//     ]
-// };
 
 
 const Chartjs = () => {
-    // const [ data, setData ] = useState(null);
-    // useEffect(()=>{
+     const [ position, setPositionsData ] = useState(null);
+     const [openPosition, setopenPosition] = useState([0,0])
+     var piePositionData = {
+        labels: [
+            'Open',
+            'Closed'
+        ],
+        datasets: [{
+            data: openPosition,
+            backgroundColor: [
+                '#4fc3f7',
+                '#2962ff'
+            ],
+            hoverBackgroundColor: [
+                '#30ade6',
+                '#092e94'
+            ]
+        }]
+    }
+     const getDataFormat = (position) => {
+         //const open is to grab the data to store, const openTotal is to sum the results and display
+        const open=[]; let openTotal=[]; const close=[]; let closeTotal = []; const finalArray=[];
+        const getData = position && position.map((p, index)=>{
+          if(p.status == 'Open'){
+            open.push(1);
+          }
+          else{
+         close.push(1);
         
-    // },[]);
+          }
+        })
+        openTotal = open && open.reduce((a, b) => a + b, 0);
+        closeTotal = close && close.reduce((a, b) => a + b, 0)
+    
+         finalArray.push.apply(finalArray, [openTotal,closeTotal])
+         setopenPosition(finalArray);
+    
+    }
+     useEffect(()=>{
+        axios({
+            method: "GET",
+            url: "/api/positions",
+            headers:{
+                //evil CORS
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(result => {
+            console.log('result', result.data);
+            setPositionsData(result.data);
+            getDataFormat(result.data)
+        })
+    }, [])    
 
-    // if(!data) {
-    //     return null;
-    // }
+
 
     return <div>
         {/*--------------------------------------------------------------------------------*/}
@@ -179,40 +156,10 @@ const Chartjs = () => {
                     </CardBody>
                 </Card>
             </Col>
-            {/* <Col md="6">
-                <Card>
-                    <CardBody>
-                        <CardTitle>Doughnut Chart</CardTitle>
-                        <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                            <Doughnut data={doughnutData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
-                        </div>
-                    </CardBody>
-                </Card>
-            </Col> */}
-            {/* <Col md="6">
-                <Card>
-                    <CardBody>
-                        <CardTitle>Line Chart</CardTitle>
-                        <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                            <Line data={lineData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] } }} />
-                        </div>
-                    </CardBody>
-                </Card>
-            </Col> */}
-            {/* <Col md="6">
-                <Card>
-                    <CardBody>
-                        <CardTitle>Polar Chart</CardTitle>
-                        <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                            <Polar data={polarData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
-                        </div>
-                    </CardBody>
-                </Card>
-            </Col> */}
             <Col md="6">
                 <Card>
                     <CardBody>
-                        <CardTitle>Candidate Distribution by City</CardTitle>
+                        <CardTitle>Position Distribution by City</CardTitle>
                         <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
                             <Radar data={radarData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } } }} />
                         </div>
