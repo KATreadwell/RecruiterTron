@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import * as jsondataUser from './data-user-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
@@ -38,11 +37,6 @@ function onAfterInsertRow(row) {
       data: userData
   })
   .then(result => console.log('Browser', result));
-
-//   for (const prop in row) {
-//     newRowStr += prop + ': ' + row[prop] + ' \n';
-//   }
-//   alert('The new row is:\n ' + newRowStr);
 }
 
 //This is for the Search item
@@ -93,7 +87,7 @@ const cellEditProp = {
 const Datatables = () => {
     //usersData is the variable, setUsersData is updating the state
     const [usersData, setUsersData] = useState([]);
-    const [hiddenId, setHiddenId] = useState(false)
+  
     useEffect(() => {
         
         axios({
@@ -129,9 +123,9 @@ const Datatables = () => {
                         >   
                         <TableHeaderColumn dataSort={true} width='100' dataField='firstName'>First Name</TableHeaderColumn>
                         <TableHeaderColumn dataSort={true} width='100' dataField='lastName'>Last Name</TableHeaderColumn>
-                        <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username</TableHeaderColumn>
+                        <TableHeaderColumn dataSort={true} width='100' dataField='username' isKey>Username (key)</TableHeaderColumn>
                         <TableHeaderColumn dataSort={true} width='100' dataField='password'>Password</TableHeaderColumn>
-                        <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin</TableHeaderColumn>
+                        <TableHeaderColumn dataSort={true} width='100' dataField='admin'>Admin (True/False)</TableHeaderColumn>
                         </BootstrapTable>
                     </CardBody>
                 </Card>

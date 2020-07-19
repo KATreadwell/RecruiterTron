@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import * as jsondataPosition from './data-position-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
@@ -8,7 +7,6 @@ import axios from 'axios';
 
  
 function onAfterDeleteRow(rowKeys) {
-    // alert('The rowkey you drop: ' + rowKeys);
     console.log('delete row', rowKeys);
     axios({
         method: 'delete',
@@ -87,8 +85,7 @@ const cellEditProp = {
 const Datatables = () => {
     //positionsData is the variable, setPositionsData is updating the state
     const [positionsData, setPositionsData] = useState([]);
-    //manually hiding object id within table to assist with proper deletion instead of using title
-    const [hiddenId, setHiddenId] = useState(false)
+   
     useEffect(() => {
         
         axios({
@@ -122,20 +119,14 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'
                         >   
-                            {/* <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn> */}
-                            {/* <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn> */}
-                            <TableHeaderColumn dataSort={true} width='150' dataField='req' isKey>Job Requisition #</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='150' dataField='req' isKey>Job Requisition # (key)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='150' dataField='title'>Title</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} width='100' dataField='status'>Status</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} width='100' dataField='status'>Status (Open/Closed)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='priority'>Priority</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='client'>Client</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} width='100' dataField='location'>Location</TableHeaderColumn>
-                            {/* <TableHeaderColumn width='100' dataField='zip'>Zip</TableHeaderColumn> */}
-                            {/* <TableHeaderColumn width='100' dataField='category'>Category</TableHeaderColumn> */}
                             <TableHeaderColumn dataSort={true} width='100' dataField='experience'>Security Exp (yrs)</TableHeaderColumn>
-                            {/* <TableHeaderColumn width='100' dataField='salary'>Salary</TableHeaderColumn> */}
                             <TableHeaderColumn dataSort={true} width='200' dataField='qualifications'>Qualifications</TableHeaderColumn>
-                            {/* <TableHeaderColumn width='100' dataField='candidates'>Candidates</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>

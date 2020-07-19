@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-//import * as jsondataCandidate from './data-candidate-table';
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
@@ -87,8 +86,7 @@ const cellEditProp = {
 const Datatables = () => {
     //candidatesData is the variable, setCandidatesData is updating the state
      const [candidatesData, setCandidatesData] = useState([]);
-     //manually hiding object id within table to assist with proper deletion instead of using name
-     const [hiddenId, setHiddenId] = useState(false)
+  
     useEffect(() => {
        
         axios({
@@ -122,19 +120,14 @@ const Datatables = () => {
                             cellEdit={cellEditProp}
                             tableHeaderClass='mb-0'   
                         >              
-                            {/* <TableHeaderColumn dataField='_id' isKey hidden hiddenOnInsert>ID</TableHeaderColumn> */}
-                            {/* <TableHeaderColumn dataField='_id' isKey>ID</TableHeaderColumn> */}
                             <TableHeaderColumn dataSort={true} dataField='name' width="150">Name</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} dataField='status' width="100">Status</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='status' width="110">Status (Interview/Hired)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='phone' width="150">Phone</TableHeaderColumn>
-                            <TableHeaderColumn dataSort={true} dataField='email' width="150" isKey>Email</TableHeaderColumn>
+                            <TableHeaderColumn dataSort={true} dataField='email' width="150" isKey>Email (key)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='address' width="150">Address</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='experience' width="100">Security Exp (yrs)</TableHeaderColumn>
                             <TableHeaderColumn dataSort={true} dataField='commute' width="100">Max Commute (mi)</TableHeaderColumn>
-                            {/* <TableHeaderColumn dataSort={true} dataField='ranking' width="100">Ranking</TableHeaderColumn> */}
-                            {/* <TableHeaderColumn dataField='salary' width="100">Salary</TableHeaderColumn> */}
                             <TableHeaderColumn dataSort={true} dataField='qualifications' width="200">Qualifications</TableHeaderColumn>
-                            {/* <TableHeaderColumn dataField='positions' width="300">Positions</TableHeaderColumn> */}
                         </BootstrapTable>
                     </CardBody>
                 </Card>
