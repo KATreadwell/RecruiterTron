@@ -11,27 +11,6 @@ import * as d from './chartjs-data';
 import axios from 'axios';
 
 
-//Interview vs Hired Candidates
-var pieCandidateData = {
-    labels: [
-        'Interview',
-        'Hired'
-    ],
-    datasets: [{
-        data: d.chartData.pieData.data,
-        backgroundColor: [
-            '#4fc3f7',
-            '#2962ff'
-        ],
-        hoverBackgroundColor: [
-            '#30ade6',
-            '#092e94'
-        ]
-    }]
-}
-
-
-
 //Bar Chart
 var barData = {
     labels: ['DMV', 'Wells Fargo', 'SCE', 'DoS', 'DGS'],
@@ -65,7 +44,12 @@ var radarData = {
 
 const Chartjs = () => {
      const [ position, setPositionsData ] = useState(null);
-     const [openPosition, setopenPosition] = useState([0,0])
+     const [ candidate, setCandidatesData ] = useState(null);
+     const [openPosition, setopenPosition] = useState([0,0]);
+     const [interviewCandidate, setinterviewCandidate] = useState([0,0]);
+     
+
+    //Positions Open vs Closed PieChart
      var piePositionData = {
         labels: [
             'Open',
@@ -83,8 +67,29 @@ const Chartjs = () => {
             ]
         }]
     }
-     const getDataFormat = (position) => {
-         //const open is to grab the data to store, const openTotal is to sum the results and display
+
+    //Candidates Hired vs Interview PieChart
+    var pieCandidateData = {
+        labels: [
+            'Interview',
+            'Hired'
+        ],
+        datasets: [{
+            data: interviewCandidate,
+            backgroundColor: [
+                '#4fc3f7',
+                '#2962ff'
+            ],
+            hoverBackgroundColor: [
+                '#30ade6',
+                '#092e94'
+            ]
+        }]
+    }
+
+    //Positions Open vs Closed
+     const getDataFormatPosition = (position) => {
+         //const open is to grab the data to store, const openTotal is to sum the results and display, p for "position" is used to store the data of the looped array
         const open=[]; let openTotal=[]; const close=[]; let closeTotal = []; const finalArray=[];
         const getData = position && position.map((p, index)=>{
           if(p.status == 'Open'){
@@ -102,6 +107,26 @@ const Chartjs = () => {
          setopenPosition(finalArray);
     
     }
+
+    const getDataFormatCandidate = (candidate) => {
+        //const open is to grab the data to store, const openTotal is to sum the results and display
+       const interview=[]; let interviewTotal=[]; const hired=[]; let hiredTotal = []; const finalArray=[];
+       const getData = candidate && candidate.map((p, index)=>{
+         if(p.status == 'Interview'){
+           interview.push(1);
+         }
+         else{
+        hired.push(1);
+       
+         }
+       })
+       interviewTotal = interview && interview.reduce((a, b) => a + b, 0);
+       hiredTotal = hired && hired.reduce((a, b) => a + b, 0)
+   
+        finalArray.push.apply(finalArray, [interviewTotal, hiredTotal])
+        setinterviewCandidate(finalArray);
+   
+   }
      useEffect(()=>{
         axios({
             method: "GET",
@@ -114,10 +139,26 @@ const Chartjs = () => {
         })
         .then(result => {
             console.log('result', result.data);
-            setPositionsData(result.data);
-            getDataFormat(result.data)
+            getDataFormatPosition(result.data)
         })
-    }, [])    
+
+        axios({
+            method: "GET",
+            url: "/api/candidates",
+            headers:{
+                //evil CORS
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(result => {
+            console.log('result', result.data);
+            getDataFormatCandidate(result.data)
+        })
+
+    }, []) 
+    
+    
 
 
 
