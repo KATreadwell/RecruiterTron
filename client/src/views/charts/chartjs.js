@@ -95,7 +95,7 @@ const Chartjs = () => {
         })
 
         barData.labels = [...labels];
-        barDataLocation.locationLabels = [...locationLabels];
+        barDataLocation.labels = [...locationLabels];
         
         openTotal = open && open.reduce((a, b) => a + b, 0);
         closeTotal = close && close.reduce((a, b) => a + b, 0)
