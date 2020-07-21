@@ -181,7 +181,7 @@ const Chartjs = () => {
                         <CardBody>
                             <CardTitle>Position Status by Client</CardTitle>
                             <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                                <Bar data={barData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { min: 0, max: 10, stepSize: 1, fontFamily: "Poppins" }}], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] } }} />
+                                <Bar data={barData} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { min: 0, max: 5, stepSize: 1, fontFamily: "Poppins" }}], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] } }} />
                             </div>
                         </CardBody>
                     </Card>
@@ -201,7 +201,7 @@ const Chartjs = () => {
                         <CardBody>
                             <CardTitle>Position Distribution by City</CardTitle>
                             <div className="chart-wrapper" style={{ width: '100%', margin: '0 auto', height: 350 }}>
-                                <Bar data={barDataLocation} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { min: 0, max: 10, stepSize: 1, fontFamily: "Poppins" }}], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] }  }} />
+                                <Bar data={barDataLocation} options={{ maintainAspectRatio: false, legend: { display: true, labels: { fontFamily: "Poppins" } }, scales: { yAxes: [{ gridLines: { display: false }, ticks: { min: 0, max: 5, stepSize: 1, fontFamily: "Poppins" }}], xAxes: [{ gridLines: { display: false }, ticks: { fontFamily: "Poppins" } }] }  }} />
                             </div>
                         </CardBody>
                     </Card>
