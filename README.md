@@ -11,8 +11,8 @@ Use the Recruiter-Tron to keep track of Recruitment efforts:
 -> This application is built using MERN!  
 -> Authentication is with Passport, using a Local Strategy.  
 -> New (to me) technology used are the Google Maps API and Chart.js, which was used for the reporting feature.  The React template was provided by wrappixel.com and utilized React- bootstrap-table, which incorporated useful features such as cell edit, sort, and full text search.
- 
- 
- 
- 
+
+#EverywhereSecurityMatters
+
+
  
