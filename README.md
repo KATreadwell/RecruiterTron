@@ -1,29 +1,18 @@
-# Create React Express App
+# The Inter-Con Security Recruiter-Tron!!!!
 
-## About This Boilerplate
-
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
-
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
-
-## Starting the app locally
-
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Use the Recruiter-Tron to keep track of Recruitment efforts:
+ - Convenient tables to keep track of Positions and Candidates!
+ - Full create/read/update/delete permissions, tied to a Mongo database to keep your data neat and tidy!
+ - "Recruiter Resources" to see important contact info and consult the Recruiter's Checklist.
+ - Google Maps from which Google driving directions can be launched within the App.
+ - Reporting feature which shows the ratio of Open to Closed Positions and the ratio of Hired to Interview Candidates, as well as Positions by Client and Distribution by City.
+ - Admin component which enables admin users to provision new users and update credentials (users are not allowed to self-authenticate).
+ 
+-> This application is built using MERN!  
+-> Authentication is with Passport, using a Local Strategy.  
+-> New (to me) technology used are the Google Maps API and Chart.js, which was used for the reporting feature.  The React template was provided by wrappixel.com and utilized React- bootstrap-table, which incorporated useful features such as cell edit, sort, and full text search.
+ 
+ 
+ 
+ 
+ 
