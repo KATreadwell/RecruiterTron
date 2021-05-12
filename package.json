@@ -38,7 +38,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "google": "^2.1.0",
-    "grpc": "^1.24.3",
+    "grpc": "^1.24.9",
     "if-env": "^1.0.4",
     "immutability-helper": "2.7.1",
     "maps": "^0.3.3",
